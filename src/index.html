@@ -5,14 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Gotu&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+
   <title>Document</title>
 </head>
 
 <body>
-  <div>Hola mundo</div>
-  <a href="#/signUp">sig up</a>
-  <a href="#/logIn">log in</a>
-  <script type="module" src="main.js"></script>
+
+  <a href="#/bienvenida">
+  <section id="slider-Container" class="slider-Container">
+    <div id="slides" class="slides">
+      <input type="radio" class="radiobutton" id="radiobutton1" name="slidesbtn">
+      <input type="radio" class="radiobutton" id="radiobutton2" name="slidesbtn">
+    </div>
+
+    <div id="first-slide" class="slides">
+      <h3 class="titles">THE SOCIAL FOOD</h3>
+      <img src="./images/slide-1.jpeg" class="imagesSlide" alt="pulpo">
+    </div>
+
+    <div id="second-slide" class="slides">
+      <h3 class="titles">THE SOCIAL FOOD</h3>
+      <img src="./images/slides-2.jpeg" class="imagesSlide" alt="bocaditos">
+    </div>
+
+    <div id="navigation-auto" class="navigation-auto">
+      <div id="auto-btn1" class="auto-btn1"></div>
+      <div id="auto-btn2" class="auto-btn2"></div>
+    </div>
+  </section>
+  </a>
+
+  <section class="forms" id="forms">
+    <a href="#/log-in">Log In</a>
+    <a href="#/sign-up">Sign Up</a>
+    <div id="container" class="containerForm">
+  </section>
+
+  <script type="module" src="main.js"></script>  
 </body>
 
 </html>
