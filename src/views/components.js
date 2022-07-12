@@ -1,4 +1,4 @@
-import signUp from './signup.js';
+import signUp from './sign-up-view.js';
 import logIn from './log-in-view.js';
 
 const components = {

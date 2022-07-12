@@ -1,7 +1,7 @@
 import { components } from '../views/components.js';
 
 const changeView = (route) => {
-  const container = document.getElementById('container');
+  const container = document.getElementById('forms');
   container.innerHTML = '';
   switch (route) {
     case '#/log-in':
