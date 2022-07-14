@@ -1,9 +1,11 @@
-import signUp from './sign-up-view.js';
-import logIn from './log-in-view.js';
+import { createLoginView, createBehaviorLoginView } from './log-in-view.js';
+import { createSignUpView, createBehaviorSignUpView } from './sign-up-view.js';
 
 const components = {
-  SignUp: signUp,
-  LogIn: logIn,
+  SignUpView: createSignUpView,
+  SignUpBehavior: createBehaviorSignUpView,
+  loginView: createLoginView,
+  logInBehavior: createBehaviorLoginView
 };
 // eslint-disable-next-line no-console
 console.log(components);

@@ -7,11 +7,21 @@
     justify-content: center;
     align-items: center;
     width: 45rem;
+    height: 40rem;
 }
 
+.slides{
+    justify-content: center;
+    align-items: center;
+}
 .imagesSlide{
     height: 40rem;
-    width: 22.5rem;
+}
+
+.forms{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .containerForm{

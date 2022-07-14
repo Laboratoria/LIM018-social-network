@@ -1,4 +1,5 @@
-export default () => {
+export const createLoginView = () =>
+{
   const viewLogin = `
   <div class="containerForm">
     <div class="view">
@@ -21,3 +22,10 @@ export default () => {
 
   return divElement;
 };
+
+export const createBehaviorLoginView = () => 
+{
+  const button = document.querySelector(".algo");
+  //
+  
+}
