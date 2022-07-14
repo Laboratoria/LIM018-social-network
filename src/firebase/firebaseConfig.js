@@ -1,10 +1,12 @@
-// Import the functions you need from the SDKs you need
+// eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js';
+// eslint-disable-next-line import/no-unresolved
 import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-// TODO: Add SDKs for Firebase products that you want to use
+// eslint-disable-next-line import/no-unresolved
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyAJS0i6kxlNF9NLIYFT5DfOV79NOU4yy_I',
   authDomain: 'the-social-food-c3b76.firebaseapp.com',
@@ -14,10 +16,15 @@ const firebaseConfig = {
   appId: '1:209961845793:web:e4ce423b50a5aab81fcf60',
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+console.log(auth);
+const dataBase = getFirestore(app);
+console.log(dataBase);
+// eslint-disable-next-line max-len
+export const signUpWithEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+console.log(signUpWithEmail);
 
-const auth = getAuth();
-
-export const signUpWithEmail = (email, password) =>{
-  return createUserWithEmailAndPassword(auth, email, password) };
+export const addCollection = (dataObject) => dataBase.collection('users')
+  .addDoc(dataObject);
+console.log(addCollection);
