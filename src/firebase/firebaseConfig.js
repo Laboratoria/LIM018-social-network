@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
 // eslint-disable-next-line import/no-unresolved
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,12 +20,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 console.log(auth);
-const dataBase = getFirestore(app);
+export const dataBase = getFirestore(app);
 console.log(dataBase);
-// eslint-disable-next-line max-len
-export const signUpWithEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-console.log(signUpWithEmail);
 
-export const addCollection = (dataObject) => dataBase.collection('users')
-  .addDoc(dataObject);
-console.log(addCollection);
+export const signUpWithEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
+export const logInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);

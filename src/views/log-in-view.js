@@ -1,3 +1,5 @@
+import { enterWithEmail } from '../lib/index.js';
+
 export const createLoginView = () =>
 {
   const viewLogin = `
@@ -5,11 +7,11 @@ export const createLoginView = () =>
     <div class="view">
       <h1 class="titles"> THE SOCIAL FOOD </h1>
       <form class="view">
-        <input type="email" placeholder="Email" id="userEmail" class="emailPassword">
+        <input type="email" placeholder="Email" id="userEmail" class="emailPassword" value="">
         <br>
         <input type="password" placeholder="Contraseña" id="password" class="emailPassword" value="">
         <br>
-        <input type="submit" id="submit" class="buttonsForm" value="Log In">
+        <button type="button" id="submitLogIn" class="buttonsForm" >Log In</button>
       </form>
         <p>o</p>
         <button type="button" id="gmailLogIn">Log In with gmail</button>
@@ -23,9 +25,22 @@ export const createLoginView = () =>
   return divElement;
 };
 
-export const createBehaviorLoginView = () => 
-{
-  const button = document.querySelector(".algo");
-  //
-  
-}
+export const createBehaviorLoginView = () => {
+  const userEmail = document.querySelector('#userEmail');
+  const userPassword = document.querySelector('#password');
+
+  const submitButton = document.querySelector('#submitLogIn');
+  console.log(userEmail.value);
+  submitButton.addEventListener('click', () => {
+    enterWithEmail(userEmail.value, userPassword.value).then(async (result) => {
+      const userCredential = await result.user;
+      // eslint-disable-next-line no-console
+      alert(`Has ingresado correctamente la cuenta con el correo electrónico ${userCredential.email}. Usarás esta dirección de correo para iniciar sesión`);
+    })
+      .catch((error) => {
+      // Debe imprimir el mensaje de error en el html
+        const errorM = error.message;
+        alert(errorM);
+      });
+  });
+};

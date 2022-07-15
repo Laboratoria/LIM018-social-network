@@ -18,12 +18,6 @@
     height: 40rem;
 }
 
-.forms{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .containerForm{
     height: 40rem;
     width: 22.5rem;
