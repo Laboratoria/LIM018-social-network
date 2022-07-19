@@ -2,31 +2,59 @@
     margin: 0;
 }
 
-.slider-Container{
+/* @media (min-width:320px) and (max-width: 480px){  */
+
+.forms{
+    height: 100%;
+    width: 100%;
+}
+
+.background{
+    background-image: url(../images/767352.jpg);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45rem;
-    height: 40rem;
 }
 
-.slides{
-    justify-content: center;
-    align-items: center;
-}
-.imagesSlide{
-    height: 40rem;
-}
-
-.containerForm{
-    height: 40rem;
-    width: 22.5rem;
+.rectangle{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-image: url(../images/Background.png);
+    justify-content: center;
+    background-color: white;
+    margin: 55% 20%;
+    border-radius: 15px;
+    opacity: 70%;
+}
+
+.rectangle > p{
+    padding: 17px;
+    font-family: 'Bad Script', cursive;
+}
+
+.rectangle > h1{
+    font-family: 'Gotu', sans-serif;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    font-weight: bolder;
+    color: rgba(150, 147, 145, 0.8);
+    cursor: pointer;
+}
+
+.backgroundImage{
+    background-image: url(../images/background2.png);
     background-repeat: no-repeat;
+    background-size:auto;
+    display: flex;
+    justify-content: space-evenly;
+    height: 43.75rem;
+    align-items: center;
 }
 
 .view{
@@ -34,6 +62,8 @@
     flex-direction: column;
     align-items: center;
     align-content: stretch;
+    background-color: white;
+    border-radius: 25px;
 }
 
 .titles{
@@ -41,25 +71,88 @@
     font-size: 35px;
     width: 260px;
     text-align: center;
+    color: rgba(34, 34, 34, 0.78);
+    padding: 40px 20px;
 }
 
-.emailPassword{
+.emailPassword, .registerInputs{
     background-color: rgba(255, 255, 255, 0.22);
-    border: 1px solid #BABFA3;
-    border-radius: 5px;
+    border: 1px solid #969391;
+    border-radius: 20px;
     height: 1.875rem;
     width: 15.625rem;
     font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
-    color: #BABFA3;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .buttonsForm{
     font-family: "Roboto", sans-serif;
-    border-radius: 5px;
+    border-radius: 20px;
     height: 2rem;
     width: 16rem;
     background-color: #BABFA3;
     color: white;    
     border: solid #BABFA3;
+    margin-bottom: 30px;
 }
+
+.signUpResgister{
+    background-color: rgba(255, 255, 255, 0.22);
+    border: 1px solid #90C9BB;
+    border-radius: 20px;
+    height: 1.875rem;
+    width: 15.625rem;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color: #90C9BB;
+    text-align: center;
+}
+
+.containerForm > h3{
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color:#90C9BB;
+}
+
+#submitSingUp{
+    background-color: #90C9BB;;
+    border: solid #90C9BB;
+}
+
+.view > h3,p{
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color: rgba(150, 147, 145, 0.8);
+    padding-bottom: 40px;
+}
+
+.text{
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    color: #BABFA3;
+    margin-bottom: 30px;
+}
+
+.gmail{
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #C92A2A;
+    opacity: 70%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.googleImage{
+    height: 20px;
+    width: 20px;
+    
+}
+
+/* } */
