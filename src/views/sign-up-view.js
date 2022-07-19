@@ -6,18 +6,20 @@ import { dataBase } from '../firebase/firebaseConfig.js';
 export const createSignUpView = () => {
   const viewSignup = `
   <div class='containerForm'>
-    <h1 class='titles'> THE SOCIAL FOOD </h1>
-      <form>
-        <input type='text' placeholder='Nombre de Usuario' id='userName'>
-        <div class='message'></div>
-        <br>
-        <input type='email' placeholder='Correo electrónico' id='email'>
-        <br>
-        <input type='password' placeholder='Contraseña' id='userPassword' value=''>
-        <br>
-        <button type='button' id='submitSingUp' class='buttonsForm' value='Sign Up'>Sign Up</button>
-      </form>
-      <h3>¿Tienes cuenta?<span><a href='#/log-in'>Entrar</a></span></h3>
+    <div class='view'>
+      <h1 class='titles'> THE SOCIAL FOOD </h1>
+        <form>
+          <input type='text' placeholder='Nombre de Usuario' id='userName' class="registerInputs">
+          <br>
+          <input type='email' placeholder='Correo electrónico' id='email' class="registerInputs">
+          <br>
+          <input type='password' placeholder='Contraseña' id='userPassword' value='' class="registerInputs">
+          <br>
+          <button type='button' id='submitSingUp' class='buttonsForm' value='Sign Up'>Sign Up</button>
+        </form>
+        <button type="button" id="gmailSignIn" class="gmail"><img src="./images/google-mas.png" class='googleImage'>  Sign In with gmail</button>
+        <h3>¿Tienes cuenta?<span><a href='#/log-in'>Entrar</a></span></h3>
+    </div>    
   </div>`;
 
   const divElement = document.createElement('div');
