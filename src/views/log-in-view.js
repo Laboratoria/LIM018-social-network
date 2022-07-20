@@ -14,8 +14,8 @@ export const createLoginView = () =>
         <button type="button" id="submitLogIn" class="buttonsForm" >Log In</button>
       </form>
         <p>o</p>
-        <button type="button" id="gmailLogIn" class="gmail"><img src="./images/google-mas.png" class='googleImage'>  Log In with gmail</button>
-        <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">aquí</a></span></h3>
+        <button type="button" id="gmailLogIn" class="gmail"><img src="./images/google-logo-png.png" class='googleImage'></button>
+        <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
   </div>  `;
 
