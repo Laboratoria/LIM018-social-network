@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
 import { registerWithEmail } from '../lib/index.js';
-import { dataBase } from '../firebase/firebaseConfig.js';
+import { dataBase, signUpWithGmail, emailVerification } from '../firebase/firebaseConfig.js';
 
 export const createSignUpView = () => {
   const viewSignup = `
@@ -41,6 +41,11 @@ export const createBehaviorSignUpView = () => {
   submitButton.addEventListener('click', () => {
     registerWithEmail(userEmail.value, userPassword.value)
       .then(async (result) => {
+        emailVerification().then(() => {
+          // Email verification sent!
+          // eslint-disable-next-line no-console
+          console.log('email enviado');
+        });
         const userCredential = result.user;
         alert(`Registro exitoso con el correo ${userCredential.email}`);
         try {
@@ -69,5 +74,27 @@ export const createBehaviorSignUpView = () => {
             break;
         }
       });
+  });
+
+  const gmailButton = document.querySelector('#gmailSignIn');
+  gmailButton.addEventListener('click', () => {
+    signUpWithGmail().then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      // The signed-in user info.
+      const user = result.user;
+      // eslint-disable-next-line no-console
+      console.log(user);
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // eslint-disable-next-line no-console
+      console.log(errorMessage, email);
+      // The AuthCredential type that was used.
+      // const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
   });
 };

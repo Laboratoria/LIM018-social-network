@@ -11,13 +11,3 @@ export const enterWithEmail = (email, password) => {
   console.log(email, password);
   return logInWithEmail(email, password);
 };
-
-// export const addDataBaseElement = (dataObject) => {
-//   addCollection(dataObject)
-//     .then((docRef) => {
-//       console.log('Document written with ID: ', docRef.id);
-//     })
-//     .catch((error) => {
-//       console.log('Error adding document: ', error);
-//     });
-// };
