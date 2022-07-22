@@ -6,12 +6,16 @@ const changeView = (route) => {
   switch (route) {
     case '':
     case '#':
-    case '#/sign-up': { container.appendChild(components.SignUpView());
-      components.SignUpBehavior();
+    case '#/sign-up': { container.appendChild(components.signUpView());
+      components.signUpBehavior();
       break;
     }
     case '#/log-in': { container.appendChild(components.loginView());
       components.logInBehavior();
+      break;
+    }
+    case '#/home': { container.appendChild(components.homeView());
+      components.homeBehavior();
       break;
     }
     default: return null;
