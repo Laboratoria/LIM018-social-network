@@ -1,7 +1,8 @@
 import { enterWithEmail } from '../lib/index.js';
+// eslint-disable-next-line import/no-cycle
+import { changeView } from '../controller.js';
 
-export const createLoginView = () =>
-{
+export const createLoginView = () => {
   const viewLogin = `
   <div class="containerForm">
     <div class="view">
@@ -14,7 +15,7 @@ export const createLoginView = () =>
         <button type="button" id="submitLogIn" class="buttonsForm" >Log In</button>
       </form>
         <p>o</p>
-        <button type="button" id="gmailLogIn" class="gmail"><img src="./images/google-logo-png.png" class='googleImage'></button>
+        <button type="button" id="gmailLogIn" class="gmail"><a href='#/home'><img src="./images/google-logo-png.png" class='googleImage'></a></button>
         <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
   </div>  `;
@@ -29,14 +30,21 @@ export const createLoginView = () =>
 export const createBehaviorLoginView = () => {
   const userEmail = document.querySelector('#userEmail');
   const userPassword = document.querySelector('#password');
-
   const submitButton = document.querySelector('#submitLogIn');
-  console.log(userEmail.value);
-  submitButton.addEventListener('click', () => {
-    enterWithEmail(userEmail.value, userPassword.value).then(async (result) => {
-      const userCredential = await result.user;
+
+  submitButton.addEventListener('click', (e) => {
+    enterWithEmail(userEmail.value, userPassword.value).then((result) => {
+      const userCredential = result.user;
+      if (userCredential.emailVerified === false) {
+        console.log(e.target);
+        console.log('email no verificado');
+      } else {
+        alert(`Has ingresado correctamente la cuenta con el correo electrónico ${userCredential.email}. Usarás esta dirección de correo para iniciar sesión`);
+        window.location.href = '#/home';
+        // changeView('#/home');
+      }
+      // si userCredential.emailVerified es false no dejar hacer login
       // eslint-disable-next-line no-console
-      alert(`Has ingresado correctamente la cuenta con el correo electrónico ${userCredential.email}. Usarás esta dirección de correo para iniciar sesión`);
     })
       .catch((error) => {
       // Debe imprimir el mensaje de error en el html

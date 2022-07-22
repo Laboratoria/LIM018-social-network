@@ -35,19 +35,21 @@ export const createBehaviorSignUpView = () => {
   const userEmail = document.querySelector('#email');
   const userPassword = document.querySelector('#userPassword');
   const eMessage = document.querySelector('#eMessage');
+  const submitButton = document.querySelector('#submitSingUp');
+  const gmailButton = document.querySelector('#gmailSignIn');
   // crear mas campos y traerlos (opcionale)
 
-  const submitButton = document.querySelector('#submitSingUp');
   submitButton.addEventListener('click', () => {
     registerWithEmail(userEmail.value, userPassword.value)
       .then(async (result) => {
         emailVerification().then(() => {
-          // Email verification sent!
-          // eslint-disable-next-line no-console
-          console.log('email enviado');
+          alert('Se envió un email de verificación de cuenta');
         });
+
         const userCredential = result.user;
+
         alert(`Registro exitoso con el correo ${userCredential.email}`);
+
         try {
           // pasarle al objeto todos los campos que le estamos pidiendo (opcional)
           const docRef = await addDoc(collection(dataBase, 'usuarios'), {
@@ -76,7 +78,6 @@ export const createBehaviorSignUpView = () => {
       });
   });
 
-  const gmailButton = document.querySelector('#gmailSignIn');
   gmailButton.addEventListener('click', () => {
     signUpWithGmail().then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -85,7 +86,6 @@ export const createBehaviorSignUpView = () => {
       // eslint-disable-next-line no-console
       console.log(user);
     }).catch((error) => {
-      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
