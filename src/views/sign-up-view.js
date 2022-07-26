@@ -44,6 +44,7 @@ export const createBehaviorSignUpView = () => {
       .then(async (result) => {
         emailVerification().then(() => {
           alert('Se envió un email de verificación de cuenta');
+          window.location.href = '#/log-in';
         });
 
         const userCredential = result.user;
@@ -62,6 +63,7 @@ export const createBehaviorSignUpView = () => {
         }
       }).catch((error) => {
         const errorM = error.message;
+        eMessage.setAttribute('class', 'errorMessage');
         console.log(errorM);
         switch (errorM) {
           case 'Firebase: Error (auth/invalid-email).': {
@@ -70,6 +72,10 @@ export const createBehaviorSignUpView = () => {
           }
           case 'Firebase: Password should be at least 6 characters (auth/weak-password).': {
             eMessage.textContent = 'La contraseña debe tener como mínimo 6 caracteres';
+            break;
+          }
+          case 'Firebase: Error (auth/email-already-in-use).': {
+            eMessage.textContent = 'El correo electrónico ya está siendo usado';
             break;
           }
           default: errorM.textContent = '';
@@ -85,6 +91,8 @@ export const createBehaviorSignUpView = () => {
       const user = result.user;
       // eslint-disable-next-line no-console
       console.log(user);
+      // redireccionar y ruteo
+      window.location.href = '#/log-in';
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;

@@ -3,34 +3,41 @@ import { getPosts, createPost } from '../firebase/firebaseConfig.js';
 export const createHomeView = () => {
   const viewHome = `
     <header class='header'>
-      <nav>
+      <nav class='navBar'>
         <ul>
-           <li>Home</li>
-           <li>usuario</li>
-           <li>buscar</li>
-           <li>me gusta</li>
-           <li>Notificaciones</li>
+           <li><a href='#/home'><img src='../images/LOGO-BLANCO.png' class='logo'></a></li>
+        </ul>
+        <input type='text' name='search' placeholder='Buscar...' class='search icon'></li>
+        <ul class='interactions'>   
+           <li><a href='#/user'><img src='../images/USUARIO-ICONO.png' class='icon'></a></li>
+           <li><a href='#/like'>like</a></li>
+           <li><a href='#/notifications'>notificaciones</a></li>
         </ul>
       </nav>
     </header>
     <section class='main'>
+      <div class='containerInfo'>
         <div class='userInfo'>
-            <h1>aquí se verá información de usuario</h1>
+          <div class='userImage'>
+            <img src='../images/USUARIO-ICONO.png' class='icon'>
+          </div>
+          <p>USUARIO</p>
         </div>
-        <div class='publications'>
-            <div class='content'>
-              <div>
-                <div>
-                  <div class='userImage'>
-                    <img src='./images/USUARIO-ICONO.png' class='icon'>
-                  </div>
-                  <input type='text' id='userPost' placeholder='¿Tienes alguna recomendación o receta de quieres compartir? Escríbelo aquí'>
-                </div>
-                <button type='button' id='buttonPost'>Publicar</button>
-                <button type='button'>x</button>  
+      </div>  
+      <div id='publications' class='publications'>
+        <div class='content'>
+          <button type='button' class='buttonPost xBut'>x</button> 
+          <div class='thePost'>
+            <div class='userPost'>
+              <div class='userImage'>
+                <img src='../images/USUARIO-ICONO.png' class='icon'>
               </div>
+              <input type='text' id='userPost' class='inputPost' placeholder='¿Tienes alguna recomendación o receta de quieres compartir? Escríbelo aquí'>
             </div>
+            <button type='button' id='buttonPost' class='buttonPost'>Publicar</button> 
+          </div>
         </div>
+      </div>
     </section>    
     <footer class='footer'>
        <h3>Todos los derechos reservados</h3>
@@ -43,13 +50,21 @@ export const createHomeView = () => {
 };
 
 export const createBehaviorHomeView = () => {
-  const content = document.querySelector('.content');
   const buttonPost = document.querySelector('#buttonPost');
   const userPost = document.querySelector('#userPost');
+  const publications = document.querySelector('#publications');
 
   getPosts()
     .then((result) => {
       console.log(result[0].contenido);
+      const obtainPost = result[0].contenido;
+      const content = document.createElement('div');
+      content.setAttribute('class', 'content');
+      const divPubl = document.createElement('div');
+      divPubl.setAttribute('class', 'userPost');
+      divPubl.textContent = obtainPost;
+      content.appendChild(divPubl);
+      publications.appendChild(content);
     }).catch((error) => {
       console.log(error);
     });
@@ -59,7 +74,17 @@ export const createBehaviorHomeView = () => {
     createPost(userPost.value)
       .then((result) => {
         console.log(result);
+        const post = userPost.value;
+        const content = document.createElement('div');
+        content.setAttribute('class', 'content');
+        const divCreateContent = document.createElement('div');
+        divCreateContent.setAttribute('class', 'userPost');
+        divCreateContent.textContent = post;
+        content.appendChild(divCreateContent);
+        publications.appendChild(content);
       })
       .catch();
   });
 };
+
+//  <a href='#/search'>buscar</a>

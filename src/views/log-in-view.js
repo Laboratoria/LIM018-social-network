@@ -14,8 +14,9 @@ export const createLoginView = () => {
         <br>
         <button type="button" id="submitLogIn" class="buttonsForm" >Log In</button>
       </form>
+      <div id='eMessage'></div>
         <p>o</p>
-        <button type="button" id="gmailLogIn" class="gmail"><a href='#/home'><img src="./images/google-logo-png.png" class='googleImage'></a></button>
+        <button type="button" id="gmailLogIn" class="gmail"><img src="./images/google-logo-png.png" class='googleImage'></a></button>
         <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
   </div>  `;
@@ -31,25 +32,36 @@ export const createBehaviorLoginView = () => {
   const userEmail = document.querySelector('#userEmail');
   const userPassword = document.querySelector('#password');
   const submitButton = document.querySelector('#submitLogIn');
+  const eMessage = document.querySelector('#eMessage');
 
   submitButton.addEventListener('click', (e) => {
     enterWithEmail(userEmail.value, userPassword.value).then((result) => {
       const userCredential = result.user;
       if (userCredential.emailVerified === false) {
         console.log(e.target);
-        console.log('email no verificado');
+        alert('email no verificado');
       } else {
         alert(`Has ingresado correctamente la cuenta con el correo electrónico ${userCredential.email}. Usarás esta dirección de correo para iniciar sesión`);
         window.location.href = '#/home';
-        // changeView('#/home');
       }
-      // si userCredential.emailVerified es false no dejar hacer login
-      // eslint-disable-next-line no-console
     })
       .catch((error) => {
       // Debe imprimir el mensaje de error en el html
         const errorM = error.message;
-        alert(errorM);
+        eMessage.setAttribute('class', 'errorMessage');
+        console.log(errorM);
+        switch (errorM) {
+          case 'Firebase: Error (auth/invalid-email).': {
+            eMessage.textContent = 'Debe ingresar un correo electrónico válido';
+            break;
+          }
+          case 'Firebase: Error (auth/wrong-password).': {
+            eMessage.textContent = 'Ingresar contraseña válida';
+            break;
+          }
+          default: errorM.textContent = '';
+            break;
+        }
       });
   });
 };
