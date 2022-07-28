@@ -1,16 +1,18 @@
 import { components } from './views/components.js';
 
-const changeView = (route) => {
-  const container = document.getElementById('forms');
+export const changeView = (route) => {
+  const container = document.querySelector('body');
   container.innerHTML = '';
   switch (route) {
-    case '':
-    case '#':
+    case '': {
+      components.loginView();
+      components.logInBehavior();
+      break; }
     case '#/sign-up': { container.appendChild(components.signUpView());
       components.signUpBehavior();
       break;
     }
-    case '#/log-in': { container.appendChild(components.loginView());
+    case '#/log-in': { components.loginView();
       components.logInBehavior();
       break;
     }
@@ -18,8 +20,7 @@ const changeView = (route) => {
       components.homeBehavior();
       break;
     }
-    default: return null;
+    default: { components.loginView();
+      break; }
   }
 };
-
-export { changeView };

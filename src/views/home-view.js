@@ -1,4 +1,4 @@
-import { getPosts, createPost } from '../firebase/firebaseConfig.js';
+import { getPosts, createPost, getPost } from '../firebase/firebaseConfig.js';
 
 export const createHomeView = () => {
   const viewHome = `
@@ -56,35 +56,39 @@ export const createBehaviorHomeView = () => {
 
   getPosts()
     .then((result) => {
-      console.log(result[0].contenido);
-      const obtainPost = result[0].contenido;
-      const content = document.createElement('div');
-      content.setAttribute('class', 'content');
-      const divPubl = document.createElement('div');
-      divPubl.setAttribute('class', 'userPost');
-      divPubl.textContent = obtainPost;
-      content.appendChild(divPubl);
-      publications.appendChild(content);
+      result.forEach((item) => {
+        const obtainPost = item.contenido;
+        const content = document.createElement('div');
+        content.setAttribute('class', 'content');
+        const divPubl = document.createElement('div');
+        divPubl.setAttribute('class', 'userPost');
+        divPubl.textContent = obtainPost;
+        content.appendChild(divPubl);
+        publications.appendChild(content);
+      });
     }).catch((error) => {
       console.log(error);
     });
 
   buttonPost.addEventListener('click', () => {
-    console.log(userPost.value);
-    createPost(userPost.value)
-      .then((result) => {
-        console.log(result);
-        const post = userPost.value;
-        const content = document.createElement('div');
-        content.setAttribute('class', 'content');
-        const divCreateContent = document.createElement('div');
-        divCreateContent.setAttribute('class', 'userPost');
-        divCreateContent.textContent = post;
-        content.appendChild(divCreateContent);
-        publications.appendChild(content);
-      })
-      .catch();
+    // evaluar lo que ingreso el usuario
+    if (userPost.value !== '') {
+      createPost(userPost.value)
+        .then((docRef) => {
+          getPost(docRef.id).then((postRef) => {
+            const post = postRef.data().contenido;
+            const content = document.createElement('div');
+            content.setAttribute('class', 'content');
+            const divCreateContent = document.createElement('div');
+            divCreateContent.setAttribute('class', 'userPost');
+            divCreateContent.textContent = post;
+            content.appendChild(divCreateContent);
+            publications.appendChild(content);
+          });
+        })
+        .catch((e) => console.log(e));
+    } else {
+      alert('llena el campo');
+    }
   });
 };
-
-//  <a href='#/search'>buscar</a>

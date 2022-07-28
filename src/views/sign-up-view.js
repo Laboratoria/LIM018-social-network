@@ -31,7 +31,6 @@ export const createSignUpView = () => {
 };
 
 export const createBehaviorSignUpView = () => {
-  const userName = document.querySelector('#userName');
   const userEmail = document.querySelector('#email');
   const userPassword = document.querySelector('#userPassword');
   const eMessage = document.querySelector('#eMessage');
@@ -46,11 +45,7 @@ export const createBehaviorSignUpView = () => {
           alert('Se envió un email de verificación de cuenta');
           window.location.href = '#/log-in';
         });
-
         const userCredential = result.user;
-
-        alert(`Registro exitoso con el correo ${userCredential.email}`);
-
         try {
           // pasarle al objeto todos los campos que le estamos pidiendo (opcional)
           const docRef = await addDoc(collection(dataBase, 'usuarios'), {

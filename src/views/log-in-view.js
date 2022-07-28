@@ -1,6 +1,5 @@
 import { enterWithEmail } from '../lib/index.js';
 // eslint-disable-next-line import/no-cycle
-import { changeView } from '../controller.js';
 
 export const createLoginView = () => {
   const viewLogin = `
@@ -24,8 +23,8 @@ export const createLoginView = () => {
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'backgroundImage');
   divElement.innerHTML = viewLogin;
-
-  return divElement;
+  const printInBody = document.querySelector('body');
+  printInBody.appendChild(divElement);
 };
 
 export const createBehaviorLoginView = () => {
@@ -41,7 +40,6 @@ export const createBehaviorLoginView = () => {
         console.log(e.target);
         alert('email no verificado');
       } else {
-        alert(`Has ingresado correctamente la cuenta con el correo electrónico ${userCredential.email}. Usarás esta dirección de correo para iniciar sesión`);
         window.location.href = '#/home';
       }
     })
@@ -59,7 +57,8 @@ export const createBehaviorLoginView = () => {
             eMessage.textContent = 'Ingresar contraseña válida';
             break;
           }
-          default: errorM.textContent = '';
+          default:
+            errorM.textContent = '';
             break;
         }
       });
