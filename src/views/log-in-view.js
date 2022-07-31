@@ -15,7 +15,8 @@ export const createLoginView = () => {
       </form>
       <div id='eMessage'></div>
         <p>o</p>
-        <button type="button" id="gmailLogIn" class="gmail"><img src="./images/google-logo-png.png" class='googleImage'></a></button>
+        <img src="./images/google-logo.png" id="gmailLogIn" class='googleImage'>
+        <p>Con Google</p>
         <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
   </div>  `;

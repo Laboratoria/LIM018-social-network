@@ -32,7 +32,7 @@ export const createHomeView = () => {
               <div class='userImage'>
                 <img src='../images/USUARIO-ICONO.png' class='icon'>
               </div>
-              <input type='text' id='userPost' class='inputPost' placeholder='¿Tienes alguna recomendación o receta de quieres compartir? Escríbelo aquí'>
+              <input type='text' id='userPost' class='inputPost' placeholder='¿Tienes alguna recomendación o receta que quieres compartir? Escríbelo aquí'>
             </div>
             <button type='button' id='buttonPost' class='buttonPost'>Publicar</button> 
           </div>

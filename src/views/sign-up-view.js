@@ -18,16 +18,24 @@ export const createSignUpView = () => {
           <button type='button' id='submitSingUp' class='buttonsForm' value='Sign Up'>Sign Up</button>
         </form>
         <div id='eMessage'></div>
-        <button type="button" id="gmailSignIn" class="gmail"><img src="./images/google-logo-png.png" class='googleImage'></button>
+        <img src="./images/google-logo.png" id="gmailSignIn" class='googleImage'>
+        <p>Con Google</p>
         <h3>¿Tienes cuenta?<span><a href='#/log-in'>  Entrar</a></span></h3>
+    </div>
+    <div class='modalContainer'>
+      <div class='modal'>
+        <img src='./images/verification-email.jpg'>
+        <p>Se envió un código de verificación a su correo electrónico</p>
+        <button class='modalButton'>Aceptar</button>
+      </div>
     </div>    
   </div>`;
 
-  const divElement = document.createElement('div');
-  divElement.setAttribute('class', 'backgroundImage');
-  divElement.innerHTML = viewSignup;
+  const sectionElement = document.createElement('section');
+  sectionElement.setAttribute('class', 'backgroundImage');
+  sectionElement.innerHTML = viewSignup;
 
-  return divElement;
+  return sectionElement;
 };
 
 export const createBehaviorSignUpView = () => {
@@ -36,14 +44,14 @@ export const createBehaviorSignUpView = () => {
   const eMessage = document.querySelector('#eMessage');
   const submitButton = document.querySelector('#submitSingUp');
   const gmailButton = document.querySelector('#gmailSignIn');
+  const modalContainer = document.querySelector('.modalContainer');
   // crear mas campos y traerlos (opcionale)
 
   submitButton.addEventListener('click', () => {
     registerWithEmail(userEmail.value, userPassword.value)
       .then(async (result) => {
         emailVerification().then(() => {
-          alert('Se envió un email de verificación de cuenta');
-          window.location.href = '#/log-in';
+          modalContainer.classList.add('reveilModal');
         });
         const userCredential = result.user;
         try {
@@ -77,6 +85,12 @@ export const createBehaviorSignUpView = () => {
             break;
         }
       });
+
+    const closeModal = document.querySelector('.modalButton');
+    closeModal.addEventListener('click', () => {
+      modalContainer.classList.remove('reveilModal');
+      window.location.href = '#/log-in';
+    });
   });
 
   gmailButton.addEventListener('click', () => {

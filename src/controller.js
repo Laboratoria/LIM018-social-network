@@ -20,7 +20,7 @@ export const changeView = (route) => {
       components.homeBehavior();
       break;
     }
-    default: { components.loginView();
+    default: { components.errorView();
       break; }
   }
 };
