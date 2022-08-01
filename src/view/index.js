@@ -1,6 +1,6 @@
-import Home from './Home';
-import Register from './Register'
-import Acces from './Acces'
+import Home from './Home.js';
+import Register from './Register.js';
+import Acces from './Acces.js';
 
 const components = {
     home: Home,

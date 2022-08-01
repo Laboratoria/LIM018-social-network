@@ -1,6 +1,6 @@
 export default ()=> {
     const viewAcces = `
-    <h2>Bienvenido/h2>
+    <h2>Bienvenido</h2>
     <label>Email</label>
     <input type="text">
     <label>Contraseña</label>
