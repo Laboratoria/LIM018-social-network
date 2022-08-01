@@ -4,9 +4,11 @@
 
 // myFunction();
 
+import{changeView} from './lib/index.js'
+
 const init = ()=>{
     window.addEventListener('hashchange',
-    ()=> console.log(window.location.hash))
+    ()=> changeView(window.location.hash))
 }
 
 window.addEventListener('load',init)
