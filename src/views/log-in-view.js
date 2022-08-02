@@ -15,10 +15,17 @@ export const createLoginView = () => {
       </form>
       <div id='eMessage'></div>
         <p>o</p>
-        <img src="./images/google-logo.png" id="gmailLogIn" class='googleImage'>
+        <img src="../images/google-logo.png" id="gmailLogIn" class='googleImage'>
         <p>Con Google</p>
         <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
+    <div class='modalContainer'>
+      <div class='modal'>
+        <img src='../images/email-alert-icon.png'>
+        <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
+        <button class='modalButton'>Aceptar</button>
+      </div>
+    </div>    
   </div>  `;
 
   const divElement = document.createElement('div');
@@ -33,13 +40,14 @@ export const createBehaviorLoginView = () => {
   const userPassword = document.querySelector('#password');
   const submitButton = document.querySelector('#submitLogIn');
   const eMessage = document.querySelector('#eMessage');
+  const modalContainer = document.querySelector('.modalContainer');
+  const closeModal = document.querySelector('.modalButton');
 
-  submitButton.addEventListener('click', (e) => {
+  submitButton.addEventListener('click', () => {
     enterWithEmail(userEmail.value, userPassword.value).then((result) => {
       const userCredential = result.user;
       if (userCredential.emailVerified === false) {
-        console.log(e.target);
-        alert('email no verificado');
+        modalContainer.classList.add('reveilModal');
       } else {
         window.location.href = '#/home';
       }
@@ -63,5 +71,9 @@ export const createBehaviorLoginView = () => {
             break;
         }
       });
+  });
+
+  closeModal.addEventListener('click', () => {
+    modalContainer.classList.remove('reveilModal');
   });
 };

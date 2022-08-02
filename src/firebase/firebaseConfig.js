@@ -40,9 +40,7 @@ const postCollection = collection(dataBase, 'post');
 // dejar la función sin responsabilidad más que para firestore
 export const getPosts = async () => {
   const snapshot = await getDocs(postCollection);
-  const posts = [];
-  snapshot.forEach((postDoc) => posts.push({ id: postDoc.id, ...postDoc.data() }));
-  return posts;
+  return snapshot;
 };
 
 export const getPost = (id) => getDoc(doc(dataBase, 'post', id));

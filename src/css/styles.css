@@ -102,8 +102,8 @@ button:hover{
 .view > h3,p{
     font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
-    color: rgba(150, 147, 145, 0.8);
-    padding-bottom: 40px;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 6px;
 }
 
 .text{
@@ -122,33 +122,27 @@ button:hover{
 }
 
 .errorMessage{
-    background-color: rgba(34, 34, 34, 0.05);
+    background-color: rgba(34, 34, 34, 0.14);
     font-family: "Roboto", sans-serif;
     font-size: 0.68rem;
     text-align: center;
-    color: red;
+    color: rgba(147, 23, 23, 1);
     width: 250px;
     height: 15px;
-    padding: 4px;
-    margin-bottom: 20px;
+    padding: 10px;
+    margin: 5px;
     border-radius: 5px; 
 } 
 
-.header,.footer{
-    background-color: rgba(186, 191, 163, 1);
-    height: 8vh;
-    text-align: center;
-    font-family: 'Gotu', sans-serif;
-    font-size: 0.75rem;
-    color: rgba(99, 91, 83, 1);
-}
-
-.header{  
+.header{
+    background-color: rgba(152, 182, 110, 1);
     width: 100%;
     height: 4rem;
+    text-align: center;
+    font-family: 'Gotu', sans-serif;
     position: fixed;
-    box-shadow: 1px 2px 11px -1px rgba(94,90,84,0.6);
-} 
+    box-shadow: 0px 15px 35px -5px rgba(104,133,65,0.35);
+}
 
 .navBar{
     display: flex;
@@ -158,17 +152,25 @@ button:hover{
 ul>li{
     padding: 8px;
     list-style-type: none;
-    align-items: center
+    align-items: center;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.5rem;
+    color: #222222;
 }
 
 .icon{
-    height: 2rem;
-    width: 2rem;
+    height: 1.44rem;
+    width: 1.44rem;
 }
 
 .logo{
-    height: 3rem;
-    width: 3rem;
+    height: 2.25rem;
+    width: 2.25rem;
 }
 
 .search{
@@ -191,6 +193,8 @@ ul>li{
 .interactions{
     display: flex;
     flex-flow: row wrap;
+    gap: 10px;
+    margin: 7px;
 }
 
 .homeSection{
@@ -215,7 +219,6 @@ ul>li{
 }
 
 .userInfo{
-    background-color: rgba(218, 209, 188, 1);
     width: 50%;
     height: 30%;
     border-radius: 18px;
@@ -227,70 +230,75 @@ ul>li{
     align-items: center;
 }
 
+.userImage{
+    background-color: rgba(201, 231, 156, 1);
+    height: 3.7rem;
+    width: 3.7rem;
+    border-radius: 50%;
+    padding: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-profile {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    position: absolute;
+}
+
 .publications{
     width: 70%;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
 }
-
 
 .content{
-    background-color: rgba(218, 209, 188, 1);
     width: 70%;
-    height: 15vh;
-    border-radius: 18px;
+    height: 10rem;
+    box-shadow: 14px 15px 41px 8px rgba(201,201,201,0.8);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.thePost{
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
+.create-post{
+    align-items: flex-end;
 }
 
-.userPost{
-    font-family: 'Gotu', sans-serif;
-    font-size: 16px;
-    background-color: white; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
-    height: 50%;
-    margin: 5px;
-    padding: 6px 10px;
-}
-
-.inputPost{
+.user-post{
     font-family: 'Gotu', sans-serif;
     font-size: 0.75rem;
-    color: rgba(99, 91, 83, 1);
-    width: 90%;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 2px;
+    color: rgba(34, 34, 34, 0.8);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50%;
+    margin: 0;
+    padding: 2px 4px;
 }
 
-.userImage{
-    background-color: rgba(99, 91, 83, 1);
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    padding: 4px;
-    display: flex;
-    justify-content: center;
+.area-post{
+    font-family: 'Gotu', sans-serif;
+    font-size: 0.75rem;
+    width: 80%;
+    border: 1px solid rgba(34, 34, 34, 0.2);;
+    border-radius: 2px;
+    padding: 8px;
 }
 
 .buttonPost{
-    background-color: rgba(99, 91, 83, 1);
+    background-color: rgba(196, 167, 71, 1);
     font-family: "Roboto", sans-serif;
     font-size: 0.7rem;
     color: white;    
-    border-radius: 2px;
+    border-radius: 20px;
     height: 1.1rem;
     width: 6rem;
     border-style: none;

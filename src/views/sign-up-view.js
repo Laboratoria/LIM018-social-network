@@ -18,7 +18,7 @@ export const createSignUpView = () => {
           <button type='button' id='submitSingUp' class='buttonsForm' value='Sign Up'>Sign Up</button>
         </form>
         <div id='eMessage'></div>
-        <img src="./images/google-logo.png" id="gmailSignIn" class='googleImage'>
+        <img src="../images/google-logo.png" id="gmailSignIn" class='googleImage'>
         <p>Con Google</p>
         <h3>¿Tienes cuenta?<span><a href='#/log-in'>  Entrar</a></span></h3>
     </div>
@@ -45,7 +45,7 @@ export const createBehaviorSignUpView = () => {
   const submitButton = document.querySelector('#submitSingUp');
   const gmailButton = document.querySelector('#gmailSignIn');
   const modalContainer = document.querySelector('.modalContainer');
-  // crear mas campos y traerlos (opcionale)
+  const closeModal = document.querySelector('.modalButton');
 
   submitButton.addEventListener('click', () => {
     registerWithEmail(userEmail.value, userPassword.value)
@@ -86,7 +86,6 @@ export const createBehaviorSignUpView = () => {
         }
       });
 
-    const closeModal = document.querySelector('.modalButton');
     closeModal.addEventListener('click', () => {
       modalContainer.classList.remove('reveilModal');
       window.location.href = '#/log-in';
