@@ -5,13 +5,13 @@ export const createHomeView = () => {
     <header class='header'>
       <nav class='navBar'>
         <ul>
-           <li><a href='#/home'><img src='../images/LOGO-BLANCO.png' class='logo'></a>THE SOCIAL FOOD</li>
+           <li><a href='#/home'><img src='./images/LOGO-BLANCO.png' class='logo'></a>THE SOCIAL FOOD</li>
         </ul>
         <input type='text' name='search' placeholder='Buscar...' class='search icon'></li>
         <ul class='interactions'>   
-           <li><a href='#/home'><img src='../images/home.png' class='icon'></a>Home</li>
-           <li><a href='#/notifications'><img src='../images/notification.png' class='icon'></a>Notificaciones</li>
-           <li><a href='#/user'><img src='../images/user.png' class='icon'></a>Perfil</li>
+           <li><a href='#/home'><img src='./images/home.png' class='icon'></a>Home</li>
+           <li><a href='#/notifications'><img src='./images/notification.png' class='icon'></a>Notificaciones</li>
+           <li><a href='#/user'><img src='./images/user.png' class='icon'></a>Perfil</li>
         </ul>
       </nav>
     </header>
@@ -19,7 +19,7 @@ export const createHomeView = () => {
       <div class='containerInfo'>
         <div class='userInfo'>
           <div class='userImage'>
-            <img src='../images/user-profile-female.png' class='icon-profile'>
+            <img src='./images/user-profile-female.png' class='icon-profile'>
           </div>
           <p>USUARIO</p>
         </div>
@@ -29,7 +29,7 @@ export const createHomeView = () => {
           <button type='button' class='buttonPost xBut'>x</button> 
           <div class='user-post' id='post-container'>
             <div class='userImage'>
-              <img src='../images/user-profile-female.png' class='icon-profile'>
+              <img src='./images/user-profile-female.png' class='icon-profile'>
             </div>
             <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' id='userPost' class='area-post'></textarea>
           </div>

@@ -18,7 +18,7 @@ export const createSignUpView = () => {
           <button type='button' id='submitSingUp' class='buttonsForm' value='Sign Up'>Sign Up</button>
         </form>
         <div id='eMessage'></div>
-        <img src="../images/google-logo.png" id="gmailSignIn" class='googleImage'>
+        <img src="./images/google-logo.png" id="gmailSignIn" class='googleImage'>
         <p>Con Google</p>
         <h3>¿Tienes cuenta?<span><a href='#/log-in'>  Entrar</a></span></h3>
     </div>
