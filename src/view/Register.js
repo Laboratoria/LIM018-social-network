@@ -7,7 +7,7 @@ export default ()=> {
     <input type="text">
     <label>Contraseña</label>
     <input type="text">
-    <button class="button" id="register">
+    <button class="button-register" id="register">
         Registrarse
     </button>`
 

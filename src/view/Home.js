@@ -1,12 +1,14 @@
 export default ()=> {
     const viewHome = `
     <h2>LaberintoLector</h2>
-    <button class="button" id="optionregister">
+    <div class=button>
+    <button class="button-register" id="optionregister">
         Registrarse
     </button>
-    <button class="button" id="optionacces">
+    <button class="button-acces" id="optionacces">
         Acceder
-    </button>`
+    </button>
+    </div>`
 
     const divElement = document.createElement('div')
     divElement.innerHTML = viewHome;
