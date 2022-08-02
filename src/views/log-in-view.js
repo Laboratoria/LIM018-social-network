@@ -15,13 +15,13 @@ export const createLoginView = () => {
       </form>
       <div id='eMessage'></div>
         <p>o</p>
-        <img src="../images/google-logo.png" id="gmailLogIn" class='googleImage'>
+        <img src="./images/google-logo.png" id="gmailLogIn" class='googleImage'>
         <p>Con Google</p>
         <h3>Si no tienes cuenta, crea una <span><a href="#/sign-up">  aquí</a></span></h3>
     </div>
     <div class='modalContainer'>
       <div class='modal'>
-        <img src='../images/email-alert-icon.png'>
+        <img src='./images/email-alert-icon.png'>
         <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
         <button class='modalButton'>Aceptar</button>
       </div>
