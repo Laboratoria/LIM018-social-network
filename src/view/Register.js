@@ -1,4 +1,4 @@
-export default ()=> {
+export default () => {
     const viewRegister = `
     <h2>Crear nueva cuenta</h2>
     <label>Nombre</label>
@@ -14,7 +14,24 @@ export default ()=> {
     const divElement = document.createElement('div')
     divElement.innerHTML = viewRegister;
 
+    // const inputEmail = document.getElementById('email')
+    // const inputPassword = document.getElementById('password')
+    // const btnRegister = document.getElementById('register')
+
+    // btnRegister.addEventListener('click',()=>{})
+
+
     return divElement;
+}
+
+export const registerFunctions = () => {
+    const btnRegister = document.getElementById('register')
+
+    btnRegister.addEventListener('click', (e) => {
+        
+    })
+
+
 }
 
 // const inputEmail = document.querySelectorAll('#email')
