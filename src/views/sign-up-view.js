@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
-import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
-import { registerWithEmail } from '../lib/index.js';
-import { dataBase, signUpWithGmail, emailVerification } from '../firebase/firebaseConfig.js';
+import {
+  signUpWithEmail, signUpWithGmail, emailVerification,
+} from '../firebase/auth.js';
+import { userInfo } from '../firebase/post.js';
 
 export const createSignUpView = () => {
   const viewSignup = `
@@ -11,7 +12,7 @@ export const createSignUpView = () => {
         <form>
           <input type='text' placeholder='Nombre de Usuario' id='userName' class="registerInputs">
           <br>
-          <input type='email' placeholder='Correo electrónico' id='email' class="registerInputs">
+          <input type='email' placeholder='Correo electrónico' id='email' value='' class="registerInputs">
           <br>
           <input type='password' placeholder='Contraseña' id='userPassword' value='' class="registerInputs">
           <br>
@@ -48,25 +49,29 @@ export const createBehaviorSignUpView = () => {
   const closeModal = document.querySelector('.modalButton');
 
   submitButton.addEventListener('click', () => {
-    registerWithEmail(userEmail.value, userPassword.value)
-      .then(async (result) => {
+    console.log('en la funcion', signUpWithEmail);
+    signUpWithEmail(userEmail.value, userPassword.value)
+      .then((result) => {
+        console.log(result.user);
+        console.log(userEmail.value, userPassword.value);
         emailVerification().then(() => {
           modalContainer.classList.add('reveilModal');
         });
         const userCredential = result.user;
-        try {
-          // pasarle al objeto todos los campos que le estamos pidiendo (opcional)
-          const docRef = await addDoc(collection(dataBase, 'usuarios'), {
-            email: userCredential.email,
-            uid: userCredential.uid,
+        userInfo(userCredential.email, userCredential.uid)
+          .then((docRef) => {
+            // eslint-disable-next-line no-console
+            console.log('Document written with ID: ', docRef.id);
+          })
+          .catch((e) => {
+            // eslint-disable-next-line no-console
+            console.error('Error adding document: ', e);
           });
-          console.log('Document written with ID: ', docRef.id);
-        } catch (e) {
-          console.error('Error adding document: ', e);
-        }
       }).catch((error) => {
+        console.log(error);
         const errorM = error.message;
         eMessage.setAttribute('class', 'errorMessage');
+        // eslint-disable-next-line no-console
         console.log(errorM);
         switch (errorM) {
           case 'Firebase: Error (auth/invalid-email).': {
@@ -81,7 +86,7 @@ export const createBehaviorSignUpView = () => {
             eMessage.textContent = 'El correo electrónico ya está siendo usado';
             break;
           }
-          default: errorM.textContent = '';
+          default: eMessage.textContent = '';
             break;
         }
       });
@@ -102,7 +107,6 @@ export const createBehaviorSignUpView = () => {
       // redireccionar y ruteo
       window.location.href = '#/log-in';
     }).catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
       const email = error.customData.email;
