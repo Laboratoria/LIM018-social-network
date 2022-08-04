@@ -17,9 +17,9 @@ export default ()=> {
     return divElement;
 }
 
-const inputEmail = document.querySelectorAll('#email')
-const inputPassword = document.querySelector('#password')
-const btnRegister = document.querySelectorAll('#register')
+// const inputEmail = document.querySelectorAll('#email')
+// const inputPassword = document.querySelector('#password')
+// const btnRegister = document.querySelectorAll('#register')
 
-btnRegister.addEventListener('click',()=>{console.log('hola')})
+// btnRegister.addEventListener('click',()=>{})
 
