@@ -4,7 +4,7 @@
 
 // myFunction();
 
-import{changeView} from './lib/index.js'
+import{changeView} from './controler/index.js'
 
 const init = ()=>{
     changeView(window.location.hash)
