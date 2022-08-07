@@ -1,4 +1,7 @@
-import { getPosts, createPost, getPost } from '../firebase/firebaseConfig.js';
+import {
+  getPosts,
+  createPost,
+} from '../firebase/post.js';
 
 export const createHomeView = () => {
   const viewHome = `
@@ -53,11 +56,13 @@ export const createBehaviorHomeView = () => {
 
   getPosts()
     .then((result) => {
+      // eslint-disable-next-line no-console
       console.log(result);
       const posts = [];
       result.forEach((postDoc) => posts.push({ id: postDoc.id, ...postDoc.data() }));
       posts.forEach((item) => {
-        const obtainPost = item.contenido;
+        console.log(item.id);
+        const obtainPost = item.content;
         const content = document.createElement('div');
         content.setAttribute('class', 'content');
         const divPubl = document.createElement('div');
@@ -67,6 +72,7 @@ export const createBehaviorHomeView = () => {
         publications.appendChild(content);
       });
     }).catch((error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
     });
 
@@ -77,18 +83,20 @@ export const createBehaviorHomeView = () => {
       msg.textContent = '';
       createPost(userPost.value)
         .then((docRef) => {
+          // eslint-disable-next-line no-console
           console.log(docRef);
           // getPost(docRef.id).then((postRef) => {
-          //   const post = postRef.data().contenido;
+          //   const post = postRef.data().content;
           //   const content = document.createElement('div');
           //   content.setAttribute('class', 'content');
           //   const divCreateContent = document.createElement('div');
-          //   divCreateContent.setAttribute('class', 'userPost');
+          //   divCreateContent.setAttribute('class', 'user-post');
           //   divCreateContent.textContent = post;
           //   content.appendChild(divCreateContent);
           //   publications.appendChild(content);
           // });
         })
+        // eslint-disable-next-line no-console
         .catch((e) => console.log(e));
     } else {
       msg.textContent = 'Por favor, escribe un comentario';

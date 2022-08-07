@@ -1,5 +1,4 @@
-import { enterWithEmail } from '../lib/index.js';
-// eslint-disable-next-line import/no-cycle
+import { logInWithEmail } from '../firebase/auth.js';
 
 export const createLoginView = () => {
   const viewLogin = `
@@ -7,7 +6,7 @@ export const createLoginView = () => {
     <div class="view">
       <h1 class="titles"> THE SOCIAL FOOD </h1>
       <form>
-        <input type="email" placeholder="Email" id="userEmail" class="emailPassword" value="" class='emailPassword'>
+        <input type="email" placeholder="Email" id="userEmail" class="emailPassword" value="hola" class='emailPassword'>
         <br>
         <input type="password" placeholder="Contraseña" id="password" class="emailPassword" value="" class='emailPassword'>
         <br>
@@ -44,7 +43,7 @@ export const createBehaviorLoginView = () => {
   const closeModal = document.querySelector('.modalButton');
 
   submitButton.addEventListener('click', () => {
-    enterWithEmail(userEmail.value, userPassword.value).then((result) => {
+    logInWithEmail(userEmail.value, userPassword.value).then((result) => {
       const userCredential = result.user;
       if (userCredential.emailVerified === false) {
         modalContainer.classList.add('reveilModal');
@@ -56,7 +55,6 @@ export const createBehaviorLoginView = () => {
       // Debe imprimir el mensaje de error en el html
         const errorM = error.message;
         eMessage.setAttribute('class', 'errorMessage');
-        console.log(errorM);
         switch (errorM) {
           case 'Firebase: Error (auth/invalid-email).': {
             eMessage.textContent = 'Debe ingresar un correo electrónico válido';
@@ -64,6 +62,10 @@ export const createBehaviorLoginView = () => {
           }
           case 'Firebase: Error (auth/wrong-password).': {
             eMessage.textContent = 'Ingresar contraseña válida';
+            break;
+          }
+          case 'Firebase: Error (auth/user-not-found).': {
+            eMessage.textContent = 'El correo no se encuentra registrado, porfavor créese una cuenta';
             break;
           }
           default:

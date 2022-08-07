@@ -149,7 +149,7 @@ button:hover{
     justify-content: space-between;
 }
 
-ul>li{
+ul {
     padding: 8px;
     list-style-type: none;
     align-items: center;
@@ -288,7 +288,7 @@ li {
     font-family: 'Gotu', sans-serif;
     font-size: 0.75rem;
     width: 80%;
-    border: 1px solid rgba(34, 34, 34, 0.2);;
+    border: 1px solid rgba(34, 34, 34, 0.2);
     border-radius: 2px;
     padding: 8px;
 }
