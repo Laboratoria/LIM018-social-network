@@ -8,6 +8,9 @@ export default ()=> {
     <button class="button-acces" id="optionacces">
         Acceder
     </button>
+    <button class="button-google" id="optiongooogle">
+        Acceder con Google
+    </button>
     </div>`
 
     const divElement = document.createElement('div')
@@ -29,7 +32,8 @@ export const homeFunctions = () => {
         console.log('hola ingresaste al acceso')
         window.location.hash ="#/Acces"
     })
-
 }
+
+
 
 
