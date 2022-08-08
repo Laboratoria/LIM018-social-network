@@ -6,7 +6,8 @@
 //};
 
 import {components} from '../view/index.js'
-import { registerFunctions } from '../view/Register.js'
+import { registerFunctions} from '../view/Register.js'
+import { homeFunctions} from '../view/Home.js'
 
 const changeView = (route)=> {
   const id = route.split('/')[1];
@@ -16,10 +17,12 @@ const changeView = (route)=> {
     case '':
     case '#':
     case '#/':
-      { return container.appendChild(components.home())}
+      { const view = container.appendChild(components.home());
+        homeFunctions();
+        return view
+      }
     case '#/Register':
-      { 
-        const view = container.appendChild(components.register());
+      { const view = container.appendChild(components.register());
         registerFunctions();
         return view;
       }

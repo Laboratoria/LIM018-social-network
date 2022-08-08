@@ -16,6 +16,20 @@ export default ()=> {
     return divElement;
 }
 
+export const homeFunctions = () => {
+    const btnRegister = document.getElementById('optionregister')
+    const btnAcces = document.getElementById('optionacces')
 
+    btnRegister.addEventListener('click', (e) => {
+        console.log('hola ingresaste al registro')
+        window.location.hash ="#/Register"
+    })
+
+    btnAcces.addEventListener('click', (e) => {
+        console.log('hola ingresaste al acceso')
+        window.location.hash ="#/Acces"
+    })
+
+}
 
 
