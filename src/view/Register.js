@@ -30,7 +30,7 @@ export const registerFunctions = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            window.location.hash ="#/Acces"
+            window.location.hash ="#/Post"
             // ...
           })
           .catch((error) => {
