@@ -1,6 +1,5 @@
 // importamos la funcion que vamos a testear
-import { accesFunctions, Acces } from '../src/view/Acces.js';
-import {components} from '../src/view/index.js'
+import defaultExport, { accesFunctions} from "../src/view/Acces.js";
 
 jest.mock('../src/lib/index.js', () =>{
   return{
@@ -10,19 +9,20 @@ jest.mock('../src/lib/index.js', () =>{
   }
 })
 
+describe('testeando default', () => {
+  it('debería ser una función', () => {
+    expect(typeof defaultExport).toBe('function');
+  });
+  it('existe el boton acces', () => {
+    const container = document.createElement('section')
+    container.appendChild(defaultExport())
+    console.log(container)
+  });
+});
+
 describe('testeando accesFunctions', () => {
   it('debería ser una función', () => {
     expect(typeof accesFunctions).toBe('function');
-  });
-  it('existe el boton acces', () => {
-    const container = document.getElementById('container')
-    console.log(container)
-    //container.innerHTML = ''
-    container.appendChild(components.acces())
-    console.log(container)
-    // accesFunctions()
-    // const btnAcces = document.getElementById('acces')
-    // console.log(btnAcces)
   });
 });
 
