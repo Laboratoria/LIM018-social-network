@@ -6,6 +6,9 @@
 //};
 
 import {components} from '../view/index.js'
+import { registerFunctions} from '../view/Register.js'
+import { homeFunctions} from '../view/Home.js'
+import { accesFunctions } from '../view/Acces.js';
 
 const changeView = (route)=> {
   const id = route.split('/')[1];
@@ -15,11 +18,20 @@ const changeView = (route)=> {
     case '':
     case '#':
     case '#/':
-      { return container.appendChild(components.home())}
+      { const view = container.appendChild(components.home());
+        homeFunctions();
+        return view
+      }
     case '#/Register':
-      { return container.appendChild(components.register())}
+      { const view = container.appendChild(components.register());
+        registerFunctions();
+        return view;
+      }
     case '#/Acces':
-      { return container.appendChild(components.acces())}
+      { const view = container.appendChild(components.acces())
+        accesFunctions();
+        return view;
+      }
     case '#/Post':
       { return container.appendChild(components.post())}
     default:
