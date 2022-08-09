@@ -32,7 +32,7 @@ exports[`changeView debería cambiar imprimir la ruta "" 1`] = `
             id="userEmail"
             placeholder="Email"
             type="email"
-            value="hola"
+            value=""
           />
           
         
@@ -171,7 +171,7 @@ exports[`changeView debería cambiar imprimir la ruta log-in 1`] = `
             id="userEmail"
             placeholder="Email"
             type="email"
-            value="hola"
+            value=""
           />
           
         
