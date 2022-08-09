@@ -6,7 +6,7 @@ export const createLoginView = () => {
     <div class="view">
       <h1 class="titles"> THE SOCIAL FOOD </h1>
       <form>
-        <input type="email" placeholder="Email" id="userEmail" class="emailPassword" value="hola" class='emailPassword'>
+        <input type="email" placeholder="Email" id="userEmail" class="emailPassword" value="" class='emailPassword'>
         <br>
         <input type="password" placeholder="Contraseña" id="password" class="emailPassword" value="" class='emailPassword'>
         <br>
@@ -69,7 +69,7 @@ export const createBehaviorLoginView = () => {
             break;
           }
           default:
-            errorM.textContent = '';
+            eMessage.textContent = '';
             break;
         }
       });

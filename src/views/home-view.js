@@ -1,7 +1,11 @@
 import {
   getPosts,
   createPost,
+  deletePost,
+  onGetPosts,
+  getPost,
 } from '../firebase/post.js';
+import { getCurrentUser } from '../firebase/auth.js';
 
 export const createHomeView = () => {
   const viewHome = `
@@ -30,15 +34,19 @@ export const createHomeView = () => {
       <div id='publications' class='publications'>
         <div class='content create-post'>
           <button type='button' class='buttonPost xBut'>x</button> 
-          <div class='user-post' id='post-container'>
-            <div class='userImage'>
-              <img src='./images/user-profile-female.png' class='icon-profile'>
+          <form class='user-post' id='post-container'>
+            <div>
+              <div>Usuario</div>
+              <div class='userImage'>
+                <img src='./images/user-profile-female.png' class='icon-profile'>
+              </div>
             </div>
             <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' id='userPost' class='area-post'></textarea>
-          </div>
+          </form>
           <p id='msg'></p>
           <button type='button' id='buttonPost' class='buttonPost'>Publicar</button> 
         </div>
+        <div id='getPosts'></div>
       </div>
     </section> 
     `;
@@ -51,53 +59,79 @@ export const createHomeView = () => {
 export const createBehaviorHomeView = () => {
   const buttonPost = document.querySelector('#buttonPost');
   const userPost = document.querySelector('#userPost');
-  const publications = document.querySelector('#publications');
+  const dataPosts = document.querySelector('#getPosts');
   const msg = document.querySelector('#msg');
 
-  getPosts()
-    .then((result) => {
-      // eslint-disable-next-line no-console
-      console.log(result);
-      const posts = [];
-      result.forEach((postDoc) => posts.push({ id: postDoc.id, ...postDoc.data() }));
-      posts.forEach((item) => {
-        console.log(item.id);
-        const obtainPost = item.content;
-        const content = document.createElement('div');
-        content.setAttribute('class', 'content');
-        const divPubl = document.createElement('div');
-        divPubl.setAttribute('class', 'user-post');
-        divPubl.textContent = obtainPost;
-        content.appendChild(divPubl);
-        publications.appendChild(content);
+  onGetPosts(() => {
+    getPosts()
+      .then((postsRef) => {
+        let content = '';
+
+        postsRef.forEach((postR) => {
+          content += `
+          <div class='content'>
+            <div class='btn-delete-edit'>
+              <button data-id=${postR.id} class='buttonPost-delete'><img src='../images/trash-bin.png' class='pub-icon'></button>
+              <button data-id=${postR.id} class='buttonPost-edit'><img src='../images/editar.png' class='pub-icon'></button>
+            </div>
+            <div>
+              <div>Usuario</div>
+              <div class='userImage'>
+                <img src='./images/user-profile-female.png' class='icon-profile'>
+              </div>
+            </div>   
+            <textarea class='user-post area-post' readonly>${postR.data().content}</textarea>
+            <button data-id=${postR.id} class='btn-like'><img src='../images/like.png' class='pub-icon'></button>
+          </div>
+        `;
+          dataPosts.innerHTML = content;
+
+          const deleteBtns = document.querySelectorAll('.buttonPost-delete');
+          console.log(deleteBtns);
+          const editBtns = document.querySelectorAll('.buttonPost-edit');
+          console.log(editBtns);
+
+          deleteBtns.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+              // console.log(e.target.dataset.id);
+              const idDeleteBtn = e.currentTarget.dataset.id;
+              deletePost(idDeleteBtn);
+            });
+          });
+
+          editBtns.forEach((btn) => {
+            btn.addEventListener('click', async (e) => {
+              console.log(e.target.dataset.id);
+              const idEditBtn = e.currentTarget.dataset.id;
+              const doc = await getPost(idEditBtn);
+              console.log(doc.data());
+            });
+          });
+        });
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
       });
-    }).catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    });
+  });
 
   buttonPost.addEventListener('click', () => {
+    const postContainer = document.querySelector('form');
     // evaluar lo que ingreso el usuario
     if (userPost.value !== '') {
       msg.classList.remove('errorMessage');
       msg.textContent = '';
-      createPost(userPost.value)
+      console.log(getCurrentUser());
+      createPost({ content: userPost.value, userId: getCurrentUser().uid })
         .then((docRef) => {
           // eslint-disable-next-line no-console
           console.log(docRef);
-          // getPost(docRef.id).then((postRef) => {
-          //   const post = postRef.data().content;
-          //   const content = document.createElement('div');
-          //   content.setAttribute('class', 'content');
-          //   const divCreateContent = document.createElement('div');
-          //   divCreateContent.setAttribute('class', 'user-post');
-          //   divCreateContent.textContent = post;
-          //   content.appendChild(divCreateContent);
-          //   publications.appendChild(content);
-          // });
+          postContainer.reset();
         })
         // eslint-disable-next-line no-console
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          alert(e, 'Ocurrió un error, inténtelo más tarde');
+          console.log(e);
+        });
     } else {
       msg.textContent = 'Por favor, escribe un comentario';
       msg.classList.add('errorMessage');

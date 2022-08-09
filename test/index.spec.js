@@ -33,14 +33,11 @@ describe('changeView', () => {
 });
 
 describe('signupview', () => {
-  // const body = document.querySelector('body');
-  // body.innerHTML = '';
-  // const signUpView = createSignUpView();
-  // body.appendChild(signUpView);
   const signUpView = createSignUpView();
   let email;
   let password;
   let btnSignUp;
+
   beforeEach(() => {
     document.body.innerHTML = '';
     document.body.appendChild(signUpView);
@@ -61,16 +58,15 @@ describe('signupview', () => {
   it('debería registrar un nuevo usuario', (done) => {
     email.value = 'prueba@hotmail.com';
     password.value = '123456';
-    console.log(email.value);
-    console.log(password.value);
     console.log('En el test', signUpWithEmail);
+
     signUpWithEmail.mockResolvedValue({
       user: { email: 'prueba@hotmail.com', password: '123456', uid: 'fnvfyy' },
     });
     console.log('En el test despues del resolved', signUpWithEmail);
     btnSignUp.click();
     expect(signUpWithEmail.mock.calls.length).toBeGreaterThan(0);
-    console.log(signUpWithEmail(email.value, password.value));
+
     emailVerification.mockImplementationOnce(() => {
       expect(signUpWithEmail).toHaveBeenCalledWith('prueba@hotmail.com', '123456');
       done();

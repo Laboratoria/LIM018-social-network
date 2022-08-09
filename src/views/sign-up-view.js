@@ -40,6 +40,7 @@ export const createSignUpView = () => {
 };
 
 export const createBehaviorSignUpView = () => {
+  const userName = document.querySelector('#userName');
   const userEmail = document.querySelector('#email');
   const userPassword = document.querySelector('#userPassword');
   const eMessage = document.querySelector('#eMessage');
@@ -49,16 +50,15 @@ export const createBehaviorSignUpView = () => {
   const closeModal = document.querySelector('.modalButton');
 
   submitButton.addEventListener('click', () => {
-    console.log('en la funcion', signUpWithEmail);
     signUpWithEmail(userEmail.value, userPassword.value)
       .then((result) => {
         console.log(result.user);
-        console.log(userEmail.value, userPassword.value);
         emailVerification().then(() => {
           modalContainer.classList.add('reveilModal');
         });
+        const uName = userName.value;
         const userCredential = result.user;
-        userInfo(userCredential.email, userCredential.uid)
+        userInfo(userCredential.email, userCredential.uid, uName)
           .then((docRef) => {
             // eslint-disable-next-line no-console
             console.log('Document written with ID: ', docRef.id);
