@@ -42,7 +42,9 @@ https://gabrielac3.github.io/LIM018-social-network/
 
 ## 6. Desarrolladoras del Proyecto: <a name="id11"></a>
 [Gabriela Córdova](https://github.com/GabrielaC3)
+
 [Deleina Llamoca](https://github.com/Deleina)
+
 [Liseth Lira](https://github.com/LisethLira)
 
 
