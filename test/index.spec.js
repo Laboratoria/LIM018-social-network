@@ -1,49 +1,46 @@
 // importamos la funcion que vamos a testear
-import defaultExport, { accesFunctions} from "../src/view/Acces.js";
+import access, { accesFunctions} from "../src/view/Acces.js";
+jest.mock('../src/lib//index.js')
 
-jest.mock('../src/lib/index.js', () =>{
-  return{
-    __esModule: true,
-    // ...originModule,
-    // signInWithEmailAndPassword: jest.fn(auth, user, password) => 'mocked baz',
-  }
-})
-
-describe('testeando default', () => {
+describe('testeando access', () => {
   it('debería ser una función', () => {
-    expect(typeof defaultExport).toBe('function');
+    expect(typeof access).toBe('function');
   });
   it('existe el boton acces', () => {
     const container = document.createElement('section')
     document.body.appendChild(container)
-    container.appendChild(defaultExport())
+    container.appendChild(access())
     const email = document.getElementById('email')
     const password = document.getElementById('password')
-    const acces = document.getElementById('acces')
-    console.log('email')
+    const accessButton = document.getElementById('acces')
     expect(email instanceof HTMLElement).toBeTruthy();
     expect(password instanceof HTMLElement).toBe(true);
-    expect(acces instanceof HTMLElement).toBeTruthy();
-    console.log(container)
+    expect(accessButton instanceof HTMLElement).toBeTruthy();
   });
 });
 
-describe('testeando accesFunctions1', () => {
+describe('testeando accesFunctions', () => {
   it('debería ser una función', () => {
     expect(typeof accesFunctions).toBe('function');
   });
-  it('debería ejecutar la funcion accesFunctions2', () => {
-    expect(typeof accesFunctions).toBe('function');
-  });
-
+  it('click del boton access', () =>{
+    const container = document.createElement('section')
+    document.body.appendChild(container)
+    container.appendChild(access())
+    accesFunctions()
+    const accessButton = document.getElementById('acces')
+    accessButton.click()
+    const merror = document.getElementById('message-error');
+    expect(merror.innerHTML).toBe('ingresa email o password faltante');
+    const user = document.getElementById('email');
+    user.value = "12345@gmail.com"
+    const pass = document.getElementById('password');
+    pass.value = "xxxxxxxxx"
+    accessButton.click()
+    console.log(window.location.hash)
+    expect(window.location.hash).toBe("#/Post");
+    console.log(window.location.hash)
+  })
 });
 
-describe('testeando accesFunctions2', () => {
-  it('debería ser una función', () => {
-    expect(typeof accesFunctions).toBe('function');
-  });
-  it('debería ejecutar la funcion singIn', () => {
-    expect(typeof accesFunctions).toBe('function');
-  });
 
-});
