@@ -9,7 +9,8 @@ export default () => {
     <input type="text" id="password">
     <button class="button-acces" id="acces">
         Acceder
-    </button>`
+    </button>
+    <p id="message-error"></p>`
 
   const divElement = document.createElement('div')
   divElement.innerHTML = viewAcces;
@@ -17,32 +18,34 @@ export default () => {
   return divElement;
 }
 
-export const accesFunctions1 = () => {
+export const accesFunctions = () => {
   const btnAcces = document.getElementById('acces')
   btnAcces.addEventListener('click', (e) => {
-    console.log('hola accediendo')
     const user = document.getElementById('email').value
     const password = document.getElementById('password').value
-    console.log(user, password)
-
-
+    const msgError = document.getElementById('message-error')
+    if (user !== '' && password !== ''){
+      signIn(user, password).then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(userCredential)
+        if(user.emailVerified){
+          console.log('verificado')
+          window.location.hash = "#/Post"
+        }else{
+          console.log('no se encontro')
+        }
+      })
+      .catch((error) => {
+        // console.log('entro al catch')
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    }else{
+      console.log('ingresa email o password faltante')
+      msgError.innerHTML ="ingresa email o password faltante"
+    }
   })
-
 }
 
-
-export const accesFunctions2 = () => {
-  signIn(user, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      window.location.hash = "#/Post"
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error.code, error.message)
-      // ..
-    });
-}
