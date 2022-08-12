@@ -4,7 +4,7 @@ import { initializeApp }
     from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
 import {
     getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    GoogleAuthProvider, signInWithPopup, sendEmailVerification,signInWithRedirect, getRedirectResult
+    GoogleAuthProvider, signInWithPopup, sendEmailVerification, signInWithRedirect, getRedirectResult
 }
     from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
