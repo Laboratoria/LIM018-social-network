@@ -29,15 +29,16 @@ export const accesFunctions = () => {
         // Signed in
         const user = userCredential.user;
         console.log(userCredential)
+        // window.location.hash = "#/Post"
         if(user.emailVerified){
           console.log('verificado')
           window.location.hash = "#/Post"
         }else{
-          console.log('no se encontro')
+          console.log('no se verificó')
         }
       })
       .catch((error) => {
-        // console.log('entro al catch')
+        console.log("error")
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..

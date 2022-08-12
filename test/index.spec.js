@@ -33,9 +33,9 @@ describe('testeando accesFunctions', () => {
     const merror = document.getElementById('message-error');
     expect(merror.innerHTML).toBe('ingresa email o password faltante');
     const user = document.getElementById('email');
-    user.value = "12345@gmail.com"
+    user.value = "belen123456@gmail.com"
     const pass = document.getElementById('password');
-    pass.value = "xxxxxxxxx"
+    pass.value = "123456"
     accessButton.click()
     console.log(window.location.hash)
     expect(window.location.hash).toBe("#/Post");
