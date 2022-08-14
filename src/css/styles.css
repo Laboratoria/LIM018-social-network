@@ -81,19 +81,6 @@ button:hover {
     margin-bottom: 30px;
 }
 
-
-/* .signUpResgister{
-    background-color: rgba(255, 255, 255, 0.22);
-    border: 1px solid #90C9BB;
-    border-radius: 20px;
-    height: 1.875rem;
-    width: 15.625rem;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.875rem;
-    color: #90C9BB;
-    text-align: center;
-} */
-
 .containerForm>h3 {
     font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
@@ -212,14 +199,15 @@ li {
 .main {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
     height: 100vh;
     margin-top: 6.9rem;
+    margin-bottom: 35rem;
 }
 
 .containerInfo {
-    width: 40%;
+    width: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -253,16 +241,26 @@ li {
 }
 
 .publications {
-    width: 70%;
+    width: 90%;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 50px;
 }
 
+.get-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
 .content {
-    width: 70%;
-    height: 10rem;
+    width: 90%;
+    height: 10.3rem;
     box-shadow: 14px 15px 41px 8px rgba(201, 201, 201, 0.8);
     border-radius: 8px;
     display: flex;
@@ -270,7 +268,7 @@ li {
     justify-content: center;
 }
 
-.create-post {
+.btn-flex-end {
     align-items: flex-end;
 }
 
@@ -312,29 +310,14 @@ li {
     display: flex;
     flex-direction: row-reverse;
 }
-/* .buttonPost-delete{
-    background-color: rgba(196, 167, 71, 1);
-    font-family: "Roboto", sans-serif;
-    font-size: 0.7rem;
-    color: white;    
-    border-radius: 20px;
-    height: 1.1rem;
-    width: 6rem;
-    border-style: none;
-    margin-top: 5px;
+
+.hidden {
+    display: none;
 }
 
-.buttonPost-edit {
-    background-color: rgba(196, 167, 71, 1);
-    font-family: "Roboto", sans-serif;
-    font-size: 0.7rem;
-    color: white;    
-    border-radius: 20px;
-    height: 1.1rem;
-    width: 6rem;
-    border-style: none;
-    margin-top: 5px;
-} */
+.show {
+    display: block;
+}
 
 .pub-icon {
     height: 0.7rem;
@@ -352,7 +335,15 @@ li {
 }
 
 
-@media only screen and (min-width:900px) {
+@media only screen and (min-width:600px) {
+    .main {
+        justify-content: center;
+    }
+
+    .containerInfo {
+        width: 40%;
+    }
+
     .userInfo {
         display: flex;
         flex-direction: column;
@@ -370,5 +361,9 @@ li {
 
     .header {
         position:fixed;
+    }
+
+    .publications {
+        width: 70%;
     }
 }

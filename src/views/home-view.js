@@ -3,7 +3,6 @@ import {
   createPost,
   deletePost,
   onGetPosts,
-  getPost,
 } from '../firebase/post.js';
 import { getCurrentUser } from '../firebase/auth.js';
 
@@ -32,7 +31,7 @@ export const createHomeView = () => {
         </div>
       </div>  
       <div id='publications' class='publications'>
-        <div class='content create-post'>
+        <div class='content btn-flex-end'>
           <button type='button' class='buttonPost xBut'>x</button> 
           <form class='user-post' id='post-container'>
             <div>
@@ -41,12 +40,13 @@ export const createHomeView = () => {
                 <img src='./images/user-profile-female.png' class='icon-profile'>
               </div>
             </div>
-            <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' id='userPost' class='area-post'></textarea>
+            <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' value='' id='userPost' class='area-post'></textarea>
           </form>
           <p id='msg'></p>
           <button type='button' id='buttonPost' class='buttonPost'>Publicar</button> 
         </div>
-        <div id='getPosts'></div>
+        <div class='text'>Lo nuevo en The Social Food</div>
+        <div id='getPosts' class='get-post'></div>
       </div>
     </section> 
     `;
@@ -62,49 +62,55 @@ export const createBehaviorHomeView = () => {
   const dataPosts = document.querySelector('#getPosts');
   const msg = document.querySelector('#msg');
 
-  onGetPosts(() => {
+  const generatePostContent = (post) => {
+    const postContent = `
+    <div class='content'>
+      <div class='btn-delete-edit'>
+        <button data-id=${post.id} class='buttonPost-delete'><img src='../images/trash-bin.png' class='pub-icon'></button>
+        <button data-id=${post.id} class='buttonPost-edit'><img src='../images/editar.png' class='pub-icon'></button>
+      </div>
+      <div>
+        <div>Usuario</div>
+        <div class='userImage'>
+          <img src='./images/user-profile-female.png' class='icon-profile'>
+        </div>
+      </div>   
+      <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
+      <button data-id=${post.id} class='btn-like'><img src='../images/like.png' class='pub-icon'></button>
+      <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
+    </div>
+  `;
+    return postContent;
+  };
+
+  const queryPosts = () => {
     getPosts()
       .then((postsRef) => {
         let content = '';
 
         postsRef.forEach((postR) => {
-          content += `
-          <div class='content'>
-            <div class='btn-delete-edit'>
-              <button data-id=${postR.id} class='buttonPost-delete'><img src='../images/trash-bin.png' class='pub-icon'></button>
-              <button data-id=${postR.id} class='buttonPost-edit'><img src='../images/editar.png' class='pub-icon'></button>
-            </div>
-            <div>
-              <div>Usuario</div>
-              <div class='userImage'>
-                <img src='./images/user-profile-female.png' class='icon-profile'>
-              </div>
-            </div>   
-            <textarea class='user-post area-post' readonly>${postR.data().content}</textarea>
-            <button data-id=${postR.id} class='btn-like'><img src='../images/like.png' class='pub-icon'></button>
-          </div>
-        `;
+          content += generatePostContent(postR);
           dataPosts.innerHTML = content;
 
           const deleteBtns = document.querySelectorAll('.buttonPost-delete');
-          console.log(deleteBtns);
           const editBtns = document.querySelectorAll('.buttonPost-edit');
-          console.log(editBtns);
 
           deleteBtns.forEach((btn) => {
             btn.addEventListener('click', (e) => {
-              // console.log(e.target.dataset.id);
               const idDeleteBtn = e.currentTarget.dataset.id;
               deletePost(idDeleteBtn);
             });
           });
 
           editBtns.forEach((btn) => {
-            btn.addEventListener('click', async (e) => {
-              console.log(e.target.dataset.id);
+            btn.addEventListener('click', (e) => {
               const idEditBtn = e.currentTarget.dataset.id;
-              const doc = await getPost(idEditBtn);
-              console.log(doc.data());
+              const textPost = document.getElementById(idEditBtn);
+              textPost.removeAttribute('readonly');
+              const btnSave = document.getElementById(`btn-${idEditBtn}`);
+
+              console.log(btnSave);
+              btnSave.setAttribute('class', 'buttonPost');
             });
           });
         });
@@ -112,11 +118,14 @@ export const createBehaviorHomeView = () => {
         // eslint-disable-next-line no-console
         console.log(error);
       });
-  });
+  };
 
+  onGetPosts(queryPosts);
+
+  // Crear nuevo documento en data de post
   buttonPost.addEventListener('click', () => {
     const postContainer = document.querySelector('form');
-    // evaluar lo que ingreso el usuario
+    // evaluar contenido que ingresó el usuario en textarea
     if (userPost.value !== '') {
       msg.classList.remove('errorMessage');
       msg.textContent = '';

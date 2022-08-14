@@ -7,6 +7,7 @@ import {
   doc,
   onSnapshot,
   deleteDoc,
+  updateDoc,
   // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
 import { app } from './firebaseConfig.js';
@@ -34,3 +35,5 @@ export const onGetPosts = async (callback) => {
 };
 
 export const deletePost = (id) => deleteDoc(doc(dataBase, 'post', id));
+
+export const updatePost = (id, post) => updateDoc(doc(dataBase, 'post', id), post);
