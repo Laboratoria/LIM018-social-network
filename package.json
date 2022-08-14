@@ -1,5 +1,5 @@
 {
-  "name": "social-network",
+  "name": "puurrlove",
   "version": "1.0.0",
   "description": "Social Network @ Laboratoria",
   "main": "src/index.html",
@@ -13,18 +13,19 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
-    "start": "serve -s src/"
+    "start": "serve -s src/",
+    "deploy": "gh-pages -d src"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "babel-jest": "^27.0.1",
-    "eslint": "^8.3.0",
+    "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-react": "^7.30.1",
     "htmlhint": "^1.0.0",
     "jest": "^27.0.1",
     "regenerator-runtime": "^0.13.1",
@@ -34,5 +35,21 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deleina/LIM018-social-network.git"
+  },
+  "author": "Deleina LLamocca Chipa",
+  "bugs": {
+    "url": "https://github.com/Deleina/LIM018-social-network/issues"
+  },
+  "homepage": "https://github.com/Deleina/LIM018-social-network#readme",
+  "dependencies": {
+    "deploy": "^1.0.3",
+    "gh-pages": "^4.0.0"
   }
 }

@@ -1,6 +1,8 @@
 // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+
+export const localStorageCall = () => {
+    const userInfo = localStorage.getItem('USER');
+    const userObject = JSON.parse(userInfo);
+    return userObject;
+  };
