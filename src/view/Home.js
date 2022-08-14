@@ -2,18 +2,19 @@ import { signInPopup, GoogleAuthProvider } from "../lib/index.js"
 
 export default ()=> {
     const viewHome = `
-    <h2>LaberintoLector</h2>
+    <section class="contenido_container1" id="container1">
     <div class=button>
     <button class="button-register" id="optionregister">
         Registrarse
     </button>
     <button class="button-acces" id="optionacces">
-        Acceder
+        Iniciar Sesión
     </button>
     <button class="button-google" id="optiongoogle">
-        Acceder con Google
+        Iniciar Sesión con Google
     </button>
-    </div>`
+    </div>
+    </section>`
 
     const divElement = document.createElement('div')
     divElement.innerHTML = viewHome;
