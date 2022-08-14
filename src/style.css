@@ -89,7 +89,6 @@ div {
 
 .contenido_container2 {
    background-image: url('../imagenes/home2.png') ;
-   /* opacity: 0.5;*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -139,6 +138,19 @@ div {
     padding-top: 12rem;
     padding-bottom: 0rem;
 }
+
+.contenido_container3 {
+    background-image: url('../imagenes/home3.png') ;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     width: 100%;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
 .post{
     position:absolute;
     display: flex;
