@@ -2,7 +2,7 @@
 import {
   signUpWithEmail, signUpWithGmail, emailVerification,
 } from '../firebase/auth.js';
-import { userInfo } from '../firebase/post.js';
+import { userInfoFirestore } from '../firebase/post.js';
 
 export const createSignUpView = () => {
   const viewSignup = `
@@ -51,22 +51,22 @@ export const createBehaviorSignUpView = () => {
 
   submitButton.addEventListener('click', () => {
     signUpWithEmail(userEmail.value, userPassword.value)
-      .then((result) => {
-        console.log(result.user);
+      .then((userCredential) => {
+        console.log(userCredential.user);
         emailVerification().then(() => {
           modalContainer.classList.add('reveilModal');
         });
         const uName = userName.value;
-        const userCredential = result.user;
-        userInfo(userCredential.email, userCredential.uid, uName)
-          .then((docRef) => {
-            // eslint-disable-next-line no-console
-            console.log('Document written with ID: ', docRef.id);
-          })
-          .catch((e) => {
-            // eslint-disable-next-line no-console
-            console.error('Error adding document: ', e);
-          });
+        const user = userCredential.user;
+        userInfoFirestore(user.email, user.uid, uName);
+        // .then((docRef) => {
+        //   // eslint-disable-next-line no-console
+        //   console.log('Document written with ID: ', docRef.id);
+        // })
+        // .catch((e) => {
+        //   // eslint-disable-next-line no-console
+        //   console.error('Error adding document: ', e);
+        // });
       }).catch((error) => {
         console.log(error);
         const errorM = error.message;

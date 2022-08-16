@@ -3,8 +3,28 @@ import {
   createPost,
   deletePost,
   onGetPosts,
+  updatePost,
+  getUser,
 } from '../firebase/post.js';
 import { getCurrentUser } from '../firebase/auth.js';
+
+const userInfoView = (divUserinfo) => {
+  const userContainer = divUserinfo;
+
+  getUser(getCurrentUser().uid)
+    .then((userRef) => {
+      const userName = userRef.data().name;
+      const userTemplate = `
+        <div class='userInfo'>
+          <div class='userImage'>
+            <img src='./images/user-profile-female.png' class='icon-profile'>
+          </div>
+          <p>${userName}</p>
+        </div>
+      `;
+      userContainer.innerHTML = userTemplate;
+    });
+};
 
 export const createHomeView = () => {
   const viewHome = `
@@ -23,22 +43,12 @@ export const createHomeView = () => {
     </header>
     <section class='main'>
       <div class='containerInfo'>
-        <div class='userInfo'>
-          <div class='userImage'>
-            <img src='./images/user-profile-female.png' class='icon-profile'>
-          </div>
-          <p>USUARIO</p>
-        </div>
       </div>  
       <div id='publications' class='publications'>
         <div class='content btn-flex-end'>
           <button type='button' class='buttonPost xBut'>x</button> 
           <form class='user-post' id='post-container'>
-            <div>
-              <div>Usuario</div>
-              <div class='userImage'>
-                <img src='./images/user-profile-female.png' class='icon-profile'>
-              </div>
+            <div class='containerInfoPost'>
             </div>
             <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' value='' id='userPost' class='area-post'></textarea>
           </form>
@@ -53,6 +63,11 @@ export const createHomeView = () => {
   const newSection = document.createElement('section');
   newSection.setAttribute('class', 'homeSection');
   newSection.innerHTML = viewHome;
+  const userInfoContainer = newSection.querySelector('.containerInfo');
+  const userInfoPost = newSection.querySelector('.containerInfoPost');
+  userInfoView(userInfoContainer);
+  userInfoView(userInfoPost);
+
   return newSection;
 };
 
@@ -70,11 +85,11 @@ export const createBehaviorHomeView = () => {
         <button data-id=${post.id} class='buttonPost-edit'><img src='../images/editar.png' class='pub-icon'></button>
       </div>
       <div>
-        <div>Usuario</div>
+        <p>Usuario</p>
         <div class='userImage'>
           <img src='./images/user-profile-female.png' class='icon-profile'>
         </div>
-      </div>   
+      </div>
       <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
       <button data-id=${post.id} class='btn-like'><img src='../images/like.png' class='pub-icon'></button>
       <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
@@ -95,23 +110,28 @@ export const createBehaviorHomeView = () => {
           const deleteBtns = document.querySelectorAll('.buttonPost-delete');
           const editBtns = document.querySelectorAll('.buttonPost-edit');
 
+          const deleteCurrentPost = (e) => {
+            const idDeleteBtn = e.currentTarget.dataset.id;
+            deletePost(idDeleteBtn);
+          };
           deleteBtns.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-              const idDeleteBtn = e.currentTarget.dataset.id;
-              deletePost(idDeleteBtn);
-            });
+            btn.addEventListener('click', deleteCurrentPost);
           });
 
-          editBtns.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-              const idEditBtn = e.currentTarget.dataset.id;
-              const textPost = document.getElementById(idEditBtn);
-              textPost.removeAttribute('readonly');
-              const btnSave = document.getElementById(`btn-${idEditBtn}`);
-
-              console.log(btnSave);
-              btnSave.setAttribute('class', 'buttonPost');
+          const editCurrentPost = (e) => {
+            const idEditBtn = e.currentTarget.dataset.id;
+            const textPost = document.getElementById(idEditBtn);
+            console.log(idEditBtn);
+            textPost.removeAttribute('readonly');
+            const btnSave = document.getElementById(`btn-${idEditBtn}`);
+            console.log(btnSave);
+            btnSave.setAttribute('class', 'buttonPost');
+            btnSave.addEventListener('click', () => {
+              updatePost(idEditBtn, { content: textPost.value, userId: getCurrentUser().uid });
             });
+          };
+          editBtns.forEach((btn) => {
+            btn.addEventListener('click', editCurrentPost);
           });
         });
       }).catch((error) => {
@@ -119,7 +139,6 @@ export const createBehaviorHomeView = () => {
         console.log(error);
       });
   };
-
   onGetPosts(queryPosts);
 
   // Crear nuevo documento en data de post
