@@ -1,14 +1,14 @@
 import { components } from './views/components.js';
 
 export const changeView = (route) => {
-  const container = document.querySelector('body');
-  container.innerHTML = '';
+  const containerBody = document.querySelector('body');
+  containerBody.innerHTML = '';
   switch (route) {
     case '': {
       components.loginView();
       components.logInBehavior();
       break; }
-    case '#/sign-up': { container.appendChild(components.signUpView());
+    case '#/sign-up': { containerBody.appendChild(components.signUpView());
       components.signUpBehavior();
       break;
     }
@@ -16,11 +16,11 @@ export const changeView = (route) => {
       components.logInBehavior();
       break;
     }
-    case '#/home': { container.appendChild(components.homeView());
+    case '#/home': { containerBody.appendChild(components.homeView());
       components.homeBehavior();
       break;
     }
-    default: { components.errorView();
+    default: { containerBody.appendChild(components.errorView());
       break; }
   }
 };
