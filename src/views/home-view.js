@@ -1,5 +1,6 @@
 import {
   getPosts,
+  getPost,
   createPost,
   deletePost,
   onGetPosts,
@@ -8,8 +9,8 @@ import {
 } from '../firebase/post.js';
 import { getCurrentUser } from '../firebase/auth.js';
 
-const userInfoView = (divUserinfo) => {
-  const userContainer = divUserinfo;
+const userInfoView = (template) => {
+  const userContainer = template;
 
   getUser(getCurrentUser().uid)
     .then((userRef) => {
@@ -24,6 +25,7 @@ const userInfoView = (divUserinfo) => {
       `;
       userContainer.innerHTML = userTemplate;
     });
+  return userContainer;
 };
 
 export const createHomeView = () => {
@@ -81,8 +83,8 @@ export const createBehaviorHomeView = () => {
     const postContent = `
     <div class='content'>
       <div class='btn-delete-edit'>
-        <button data-id=${post.id} class='buttonPost-delete'><img src='../images/trash-bin.png' class='pub-icon'></button>
-        <button data-id=${post.id} class='buttonPost-edit'><img src='../images/editar.png' class='pub-icon'></button>
+        <button data-id=${post.id} class='buttonPost-delete'><img src='./images/trash-bin.png' class='pub-icon'></button>
+        <button data-id=${post.id} class='buttonPost-edit'><img src='./images/editar.png' class='pub-icon'></button>
       </div>
       <div>
         <p>Usuario</p>
@@ -91,7 +93,10 @@ export const createBehaviorHomeView = () => {
         </div>
       </div>
       <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
-      <button data-id=${post.id} class='btn-like'><img src='../images/like.png' class='pub-icon'></button>
+      <div class='like-section'>  
+        <button data-id=${post.id} class='btn-like'><img src='./images/like.png' class='pub-icon'></button>
+        <p>${post.data().likes.length} me gusta</p>
+      </div>  
       <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
     </div>
   `;
@@ -109,6 +114,7 @@ export const createBehaviorHomeView = () => {
 
           const deleteBtns = document.querySelectorAll('.buttonPost-delete');
           const editBtns = document.querySelectorAll('.buttonPost-edit');
+          const likeBtns = document.querySelectorAll('.btn-like');
 
           const deleteCurrentPost = (e) => {
             const idDeleteBtn = e.currentTarget.dataset.id;
@@ -133,12 +139,34 @@ export const createBehaviorHomeView = () => {
           editBtns.forEach((btn) => {
             btn.addEventListener('click', editCurrentPost);
           });
+
+          const countingLikesOfPost = async (e) => {
+            console.log(e.currentTarget.dataset.id);
+            const idLikeBtn = e.currentTarget.dataset.id;
+            const postDoc = await getPost(idLikeBtn);
+            const likesOfPost = postDoc.data().likes;
+            console.log(likesOfPost);
+            const idUser = postDoc.data().userId;
+            console.log(likesOfPost.concat(idUser));
+
+            if (likesOfPost.includes(idUser)) {
+              const compareIdLikesUsers = likesOfPost.filter((idLike) => idLike !== idUser);
+              updatePost(idLikeBtn, { likes: compareIdLikesUsers });
+            } else {
+              updatePost(idLikeBtn, { likes: likesOfPost.concat(idUser) });
+            }
+          };
+
+          likeBtns.forEach((btn) => {
+            btn.addEventListener('click', countingLikesOfPost);
+          });
         });
       }).catch((error) => {
         // eslint-disable-next-line no-console
         console.log(error);
       });
   };
+
   onGetPosts(queryPosts);
 
   // Crear nuevo documento en data de post
@@ -149,7 +177,7 @@ export const createBehaviorHomeView = () => {
       msg.classList.remove('errorMessage');
       msg.textContent = '';
       console.log(getCurrentUser());
-      createPost({ content: userPost.value, userId: getCurrentUser().uid })
+      createPost({ content: userPost.value, userId: getCurrentUser().uid, likes: [] })
         .then((docRef) => {
           // eslint-disable-next-line no-console
           console.log(docRef);
@@ -157,7 +185,6 @@ export const createBehaviorHomeView = () => {
         })
         // eslint-disable-next-line no-console
         .catch((e) => {
-          alert(e, 'Ocurrió un error, inténtelo más tarde');
           console.log(e);
         });
     } else {

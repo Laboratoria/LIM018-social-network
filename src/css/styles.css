@@ -225,8 +225,8 @@ li {
 
 .userImage {
     background-color: rgba(201, 231, 156, 1);
-    height: 3.7rem;
-    width: 3.7rem;
+    height: 2.45rem;
+    width: 2.45rem;
     border-radius: 50%;
     padding: 4px;
     display: flex;
@@ -235,8 +235,8 @@ li {
 }
 
 .icon-profile {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 2.4rem;
+    width: 2.4rem;
     border-radius: 50%;
 }
 
@@ -334,6 +334,9 @@ li {
     transform: scale(1.1);
 }
 
+.like-section {
+    display: flex;
+}
 
 @media only screen and (min-width:600px) {
     .main {

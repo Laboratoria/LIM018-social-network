@@ -5,6 +5,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendEmailVerification,
+  onAuthStateChanged,
+  signOut,
   // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
 import { app } from './firebaseConfig.js';
@@ -23,3 +25,9 @@ export const signUpWithGmail = () => signInWithPopup(auth, provider);
 export const emailVerification = () => sendEmailVerification(auth.currentUser);
 
 export const getCurrentUser = () => auth.currentUser;
+
+export const stateOfTheUser = () => onAuthStateChanged;
+
+export const logOut = () => {
+  signOut(auth);
+};

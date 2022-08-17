@@ -43,9 +43,9 @@ export const createBehaviorLoginView = () => {
   const closeModal = document.querySelector('.modalButton');
 
   submitButton.addEventListener('click', () => {
-    logInWithEmail(userEmail.value, userPassword.value).then((result) => {
-      const userCredential = result.user;
-      if (userCredential.emailVerified === false) {
+    logInWithEmail(userEmail.value, userPassword.value).then((userCredential) => {
+      const user = userCredential.user;
+      if (user.emailVerified === false) {
         modalContainer.classList.add('reveilModal');
       } else {
         window.location.href = '#/home';
