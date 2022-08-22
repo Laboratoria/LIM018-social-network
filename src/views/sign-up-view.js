@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import {
-  signUpWithEmail, signUpWithGmail, emailVerification,
+  signUpWithEmail, signUpWithGmail, emailVerification, completeUserInfo, GoogleAuthProvider,
 } from '../firebase/auth.js';
 import { userInfoFirestore } from '../firebase/post.js';
 
@@ -52,21 +52,17 @@ export const createBehaviorSignUpView = () => {
   submitButton.addEventListener('click', () => {
     signUpWithEmail(userEmail.value, userPassword.value)
       .then((userCredential) => {
-        console.log(userCredential.user);
         emailVerification().then(() => {
           modalContainer.classList.add('reveilModal');
         });
         const uName = userName.value;
         const user = userCredential.user;
-        userInfoFirestore(user.email, user.uid, uName);
-        // .then((docRef) => {
-        //   // eslint-disable-next-line no-console
-        //   console.log('Document written with ID: ', docRef.id);
-        // })
-        // .catch((e) => {
-        //   // eslint-disable-next-line no-console
-        //   console.error('Error adding document: ', e);
-        // });
+        completeUserInfo({ displayName: `${uName}` });
+        userInfoFirestore(user.uid, {
+          email: user.email,
+          name: uName,
+          uid: user.uid,
+        });
       }).catch((error) => {
         console.log(error);
         const errorM = error.message;
@@ -101,11 +97,19 @@ export const createBehaviorSignUpView = () => {
     signUpWithGmail().then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
+      sessionStorage.clear();
+      GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
+      sessionStorage.setItem('USER', JSON.stringify(user.uid));
+      userInfoFirestore(user.uid, {
+        email: user.email,
+        name: user.displayName,
+        photo: user.photoURL,
+      });
       // eslint-disable-next-line no-console
       console.log(user);
       // redireccionar y ruteo
-      window.location.href = '#/log-in';
+      window.location.href = '#/home';
     }).catch((error) => {
       const errorMessage = error.message;
       // The email of the user's account used.

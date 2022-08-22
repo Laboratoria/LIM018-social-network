@@ -1,4 +1,5 @@
-import { logInWithEmail } from '../firebase/auth.js';
+import { logInWithEmail, signUpWithGmail, GoogleAuthProvider } from '../firebase/auth.js';
+import { userInfoFirestore } from '../firebase/post.js';
 
 export const createLoginView = () => {
   const viewLogin = `
@@ -41,6 +42,7 @@ export const createBehaviorLoginView = () => {
   const eMessage = document.querySelector('#eMessage');
   const modalContainer = document.querySelector('.modalContainer');
   const closeModal = document.querySelector('.modalButton');
+  const gmailButton = document.querySelector('#gmailLogIn');
 
   submitButton.addEventListener('click', () => {
     logInWithEmail(userEmail.value, userPassword.value).then((userCredential) => {
@@ -48,6 +50,7 @@ export const createBehaviorLoginView = () => {
       if (user.emailVerified === false) {
         modalContainer.classList.add('reveilModal');
       } else {
+        sessionStorage.setItem('USER', JSON.stringify(user.uid));
         window.location.href = '#/home';
       }
     })
@@ -78,4 +81,35 @@ export const createBehaviorLoginView = () => {
   closeModal.addEventListener('click', () => {
     modalContainer.classList.remove('reveilModal');
   });
+
+  gmailButton.addEventListener('click', () => {
+    signUpWithGmail().then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      sessionStorage.clear();
+      GoogleAuthProvider.credentialFromResult(result);
+      const user = result.user;
+      sessionStorage.setItem('USER', JSON.stringify(user.uid));
+      console.log(user);
+      userInfoFirestore(user.uid, {
+        email: user.email,
+        name: user.displayName,
+        photo: user.photoURL,
+      });
+      // redireccionar y ruteo
+      window.location.href = '#/home';
+    }).catch((error) => {
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // eslint-disable-next-line no-console
+      console.log(errorMessage, email);
+      // The AuthCredential type that was used.
+      // const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  });
 };
+
+// sessionStorage.setItem('USER', JSON.stringify(user.uid));
+// let userObject = sessionStorage.getItem('USER');
+//   userObject = JSON.parse(sessionStorage.USER);
