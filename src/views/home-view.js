@@ -5,28 +5,9 @@ import {
   deletePost,
   onGetPosts,
   updatePost,
-  getUser,
 } from '../firebase/post.js';
 import { getCurrentUser } from '../firebase/auth.js';
-
-const userInfoView = (template) => {
-  const userContainer = template;
-
-  getUser(getCurrentUser().uid)
-    .then((userRef) => {
-      const userName = userRef.data().name;
-      const userTemplate = `
-        <div class='userInfo'>
-          <div class='userImage'>
-            <img src='./images/user-profile-female.png' class='icon-profile'>
-          </div>
-          <p>${userName}</p>
-        </div>
-      `;
-      userContainer.innerHTML = userTemplate;
-    });
-  return userContainer;
-};
+import { userInfoView } from '../lib/index.js';
 
 export const createHomeView = () => {
   const viewHome = `
@@ -69,7 +50,6 @@ export const createHomeView = () => {
   const userInfoPost = newSection.querySelector('.containerInfoPost');
   userInfoView(userInfoContainer);
   userInfoView(userInfoPost);
-
   return newSection;
 };
 
@@ -80,26 +60,27 @@ export const createBehaviorHomeView = () => {
   const msg = document.querySelector('#msg');
 
   const generatePostContent = (post) => {
+    const likeActive = post.data().likes.includes(getCurrentUser().uid);
     const postContent = `
-    <div class='content'>
-      <div class='btn-delete-edit'>
-        <button data-id=${post.id} class='buttonPost-delete'><img src='./images/trash-bin.png' class='pub-icon'></button>
-        <button data-id=${post.id} class='buttonPost-edit'><img src='./images/editar.png' class='pub-icon'></button>
-      </div>
-      <div>
-        <p>Usuario</p>
-        <div class='userImage'>
-          <img src='./images/user-profile-female.png' class='icon-profile'>
+      <div class='content'>
+        ${post.data().userId === getCurrentUser().uid ? `<div class='btn-delete-edit'>
+          <button data-id=${post.id} class='buttonPost-delete'><img src='./images/trash-bin.png' class='pub-icon'></button>
+          <button data-id=${post.id} class='buttonPost-edit'><img src='./images/editar.png' class='pub-icon'></button>
+        </div>` : ''}
+        <div class='show-user'>
+          <div class='userImage'>
+            <img src='${post.data().photoUser !== undefined ? post.data().photoUser : './images/USUARIO-ICONO.png'}' class='icon-profile'>
+          </div>
+          <p>${post.data().userName}</p>
         </div>
+        <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
+        <div class='like-section'>  
+          <button data-id=${post.id} class='btn-like'><img src='${likeActive ? '../images/heart.png' : '../images/like.png'}' class='pub-icon'></button>
+          <p>${post.data().likes.length} me gusta</p>
+        </div>  
+        <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
       </div>
-      <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
-      <div class='like-section'>  
-        <button data-id=${post.id} class='btn-like'><img src='./images/like.png' class='pub-icon'></button>
-        <p>${post.data().likes.length} me gusta</p>
-      </div>  
-      <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
-    </div>
-  `;
+    `;
     return postContent;
   };
 
@@ -127,30 +108,27 @@ export const createBehaviorHomeView = () => {
           const editCurrentPost = (e) => {
             const idEditBtn = e.currentTarget.dataset.id;
             const textPost = document.getElementById(idEditBtn);
-            console.log(idEditBtn);
             textPost.removeAttribute('readonly');
+
             const btnSave = document.getElementById(`btn-${idEditBtn}`);
-            console.log(btnSave);
             btnSave.setAttribute('class', 'buttonPost');
             btnSave.addEventListener('click', () => {
-              updatePost(idEditBtn, { content: textPost.value, userId: getCurrentUser().uid });
+              updatePost(idEditBtn, { content: textPost.value });
             });
           };
+
           editBtns.forEach((btn) => {
             btn.addEventListener('click', editCurrentPost);
           });
 
           const countingLikesOfPost = async (e) => {
-            console.log(e.currentTarget.dataset.id);
             const idLikeBtn = e.currentTarget.dataset.id;
             const postDoc = await getPost(idLikeBtn);
             const likesOfPost = postDoc.data().likes;
-            console.log(likesOfPost);
-            const idUser = postDoc.data().userId;
-            console.log(likesOfPost.concat(idUser));
+            const idUser = getCurrentUser().uid;
 
             if (likesOfPost.includes(idUser)) {
-              const compareIdLikesUsers = likesOfPost.filter((idLike) => idLike !== idUser);
+              const compareIdLikesUsers = likesOfPost.filter((idLikeData) => idLikeData !== idUser);
               updatePost(idLikeBtn, { likes: compareIdLikesUsers });
             } else {
               updatePost(idLikeBtn, { likes: likesOfPost.concat(idUser) });
@@ -176,8 +154,14 @@ export const createBehaviorHomeView = () => {
     if (userPost.value !== '') {
       msg.classList.remove('errorMessage');
       msg.textContent = '';
-      console.log(getCurrentUser());
-      createPost({ content: userPost.value, userId: getCurrentUser().uid, likes: [] })
+
+      createPost({
+        userName: getCurrentUser().displayName,
+        content: userPost.value,
+        photoUser: getCurrentUser().photoURL,
+        userId: getCurrentUser().uid,
+        likes: [],
+      })
         .then((docRef) => {
           // eslint-disable-next-line no-console
           console.log(docRef);

@@ -9,24 +9,37 @@ jest.mock('../src/firebase/post.js');
 
 describe('changeView', () => {
   document.body.innerHTML = '';
+  window.location.href = '#/home';
   it('debería ser una función', () => {
     expect(typeof changeView).toBe('function');
   });
 
-  it('debería cambiar imprimir la ruta log-in', () => {
+  it('debería imprimir la ruta log-in', () => {
     changeView('#/log-in');
     const body = document.querySelector('body');
     expect(body).toMatchSnapshot();
   });
 
-  it('debería cambiar imprimir la ruta sign-up', () => {
+  it('debería imprimir la ruta sign-up', () => {
     changeView('#/sign-up');
     const body = document.querySelector('body');
     expect(body).toMatchSnapshot();
   });
 
-  it('debería cambiar imprimir la ruta ""', () => {
+  it('debería imprimir la ruta home', () => {
+    changeView('#/home');
+    const body = document.querySelector('body');
+    expect(body).toMatchSnapshot();
+  });
+
+  it('debería imprimir la ruta ""', () => {
     changeView('');
+    const body = document.querySelector('body');
+    expect(body).toMatchSnapshot();
+  });
+
+  it('debería imprimir ruta default', () => {
+    changeView('#/otraruta');
     const body = document.querySelector('body');
     expect(body).toMatchSnapshot();
   });
@@ -37,6 +50,7 @@ describe('signupview', () => {
   let email;
   let password;
   let btnSignUp;
+  let eMessage;
 
   beforeEach(() => {
     document.body.innerHTML = '';
@@ -44,6 +58,7 @@ describe('signupview', () => {
     email = document.getElementById('email');
     password = document.getElementById('userPassword');
     btnSignUp = document.getElementById('submitSingUp');
+    eMessage = document.getElementById('eMessage');
     createBehaviorSignUpView();
   });
 
@@ -55,22 +70,30 @@ describe('signupview', () => {
     expect(signUpView).toMatchSnapshot();
   });
 
-  it('debería registrar un nuevo usuario', (done) => {
+  it('debería mostrar un modal cuando se registre correctamente', (done) => {
     email.value = 'prueba@hotmail.com';
     password.value = '123456';
-    console.log('En el test', signUpWithEmail);
 
     signUpWithEmail.mockResolvedValue({
       user: { email: 'prueba@hotmail.com', password: '123456', uid: 'fnvfyy' },
     });
-    console.log('En el test despues del resolved', signUpWithEmail);
-    btnSignUp.click();
-    expect(signUpWithEmail.mock.calls.length).toBeGreaterThan(0);
+    emailVerification.mockImplementationOnce(() => Promise.resolve());
 
-    emailVerification.mockImplementationOnce(() => {
-      expect(signUpWithEmail).toHaveBeenCalledWith('prueba@hotmail.com', '123456');
+    btnSignUp.click();
+
+    setTimeout(() => {
+      const modalContainer = document.querySelector('.modalContainer');
+      expect(modalContainer.classList.contains('reveilModal')).toBe(true);
       done();
-      return Promise.resolve();
-    });
+    }, 0);
+  });
+
+  it('Debería mostar mensaje de error si no tiene formato válido', () => {
+    email.value = 'prueba';
+    password.value = '123456';
+
+    signUpWithEmail.mockRejectedValueOnce(new Error('Firebase: Error (auth/invalid-email).'));
+    btnSignUp.click();
+    expect(eMessage.textContent).toEqual('Debe ingresar un correo electrónico válido');
   });
 });

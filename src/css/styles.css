@@ -225,8 +225,8 @@ li {
 
 .userImage {
     background-color: rgba(201, 231, 156, 1);
-    height: 2.45rem;
-    width: 2.45rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
     padding: 4px;
     display: flex;
@@ -235,8 +235,8 @@ li {
 }
 
 .icon-profile {
-    height: 2.4rem;
-    width: 2.4rem;
+    height: 1.8rem;
+    width: 1.8rem;
     border-radius: 50%;
 }
 
@@ -256,6 +256,7 @@ li {
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
+    padding-bottom: 6rem;
 }
 
 .content {

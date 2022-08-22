@@ -9,8 +9,6 @@ import {
   deleteDoc,
   updateDoc,
   setDoc,
-  query,
-  where,
   // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js';
 import { app } from './firebaseConfig.js';
@@ -23,11 +21,7 @@ export const userInfo = (email, uid, name) => addDoc(collection(dataBase, 'usuar
   name,
 });
 
-export const userInfoFirestore = (email, uid, name) => setDoc(doc(dataBase, 'usuarios', uid), {
-  email,
-  uid,
-  name,
-});
+export const userInfoFirestore = (uid, infoUser) => setDoc(doc(dataBase, 'usuarios', uid), infoUser);
 
 // dejar la función sin responsabilidad más que para firestore
 export const getPosts = () => getDocs(collection(dataBase, 'post'));

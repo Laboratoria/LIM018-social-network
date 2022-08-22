@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`changeView debería cambiar imprimir la ruta "" 1`] = `
+exports[`changeView debería imprimir la ruta "" 1`] = `
 <body>
   <div
     class="backgroundImage"
@@ -139,7 +139,7 @@ exports[`changeView debería cambiar imprimir la ruta "" 1`] = `
 </body>
 `;
 
-exports[`changeView debería cambiar imprimir la ruta log-in 1`] = `
+exports[`changeView debería imprimir la ruta log-in 1`] = `
 <body>
   <div
     class="backgroundImage"
@@ -278,7 +278,7 @@ exports[`changeView debería cambiar imprimir la ruta log-in 1`] = `
 </body>
 `;
 
-exports[`changeView debería cambiar imprimir la ruta sign-up 1`] = `
+exports[`changeView debería imprimir la ruta sign-up 1`] = `
 <body>
   <section
     class="backgroundImage"
@@ -420,6 +420,30 @@ exports[`changeView debería cambiar imprimir la ruta sign-up 1`] = `
   
     </div>
   </section>
+</body>
+`;
+
+exports[`changeView debería imprimir ruta default 1`] = `
+<body>
+  <div>
+    
+    
+    <h2>
+      404
+    </h2>
+    
+    
+    <h1>
+      Página no encontrada
+    </h1>
+    
+    
+    <p>
+      El archivo especificado no se encontró en este sitio web. Por favor, compruebe la URL para errores y vuelva a intentarlo.
+    </p>
+    
+    
+  </div>
 </body>
 `;
 
