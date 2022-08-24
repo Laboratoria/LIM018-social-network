@@ -28,7 +28,7 @@ export const createHomeView = () => {
       <div class='containerInfo'>
       </div>  
       <div id='publications' class='publications'>
-        <div class='content btn-flex-end'>
+        <div class='content newpost'>
           <button type='button' class='buttonPost xBut'>x</button> 
           <form class='user-post' id='post-container'>
             <div class='containerInfoPost'>
@@ -61,6 +61,7 @@ export const createBehaviorHomeView = () => {
 
   const generatePostContent = (post) => {
     const likeActive = post.data().likes.includes(getCurrentUser().uid);
+    const userImage = post.data().userId === getCurrentUser().uid ? getCurrentUser().photoURL : './images/USUARIO-ICONO.png';
     const postContent = `
       <div class='content'>
         ${post.data().userId === getCurrentUser().uid ? `<div class='btn-delete-edit'>
@@ -69,9 +70,9 @@ export const createBehaviorHomeView = () => {
         </div>` : ''}
         <div class='show-user'>
           <div class='userImage'>
-            <img src='${post.data().photoUser !== undefined ? post.data().photoUser : './images/USUARIO-ICONO.png'}' class='icon-profile'>
+            <img src='${userImage}' class='icon-profile' referrerpolicy='no-referrer'>
           </div>
-          <p>${post.data().userName}</p>
+          <p>${post.data().userName !== null ? post.data().userName : 'Usuario'}</p>
         </div>
         <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
         <div class='like-section'>  
@@ -177,3 +178,6 @@ export const createBehaviorHomeView = () => {
     }
   });
 };
+
+// referrerpolicy="no-referrer"
+// <img src=${userImgProfile} alt="imagen de perfil" referrerpolicy="no-referrer">
