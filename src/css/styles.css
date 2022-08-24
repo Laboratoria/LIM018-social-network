@@ -203,7 +203,6 @@ li {
     width: 100%;
     height: 100vh;
     margin-top: 6.9rem;
-    margin-bottom: 35rem;
 }
 
 .containerInfo {
@@ -235,8 +234,8 @@ li {
 }
 
 .icon-profile {
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 1.9rem;
+    width: 1.9rem;
     border-radius: 50%;
 }
 
@@ -269,13 +268,11 @@ li {
     justify-content: center;
 }
 
-.btn-flex-end {
+.newpost {
     align-items: flex-end;
 }
 
 .user-post {
-    font-family: 'Gotu', sans-serif;
-    font-size: 0.75rem;
     color: rgba(34, 34, 34, 0.8);
     display: flex;
     flex-direction: row;
@@ -289,10 +286,12 @@ li {
 .area-post {
     font-family: 'Gotu', sans-serif;
     font-size: 0.75rem;
-    width: 80%;
+    width: 90%;
     border: 1px solid rgba(34, 34, 34, 0.2);
     border-radius: 2px;
     padding: 8px;
+    margin-inline: 0.3rem;
+    resize: none;
 }
 
 .buttonPost {
@@ -351,8 +350,8 @@ li {
     .userInfo {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: center; 
+        justify-content: space-evenly;
+        align-items: center;
     }
 
     .interactions {
