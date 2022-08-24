@@ -9,12 +9,18 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 * Adultos desde jóvenes de entre 20 a 40 años que son aficionados a la cocina y gastronomía que desean formar una comunidad e interactuar con personas entusiastas como ellos mediante sus publicaciones y dando me gusta a las publicaciones de otros usuarios.
 
 ### Prototipo de baja fidelidad:
-
+(LIM018-social-network\src\images\mobile-lowprototipe.png)
 ### Prototipo de alta fidelidad:
+* **Mobile**
+(LIM018-social-network\src\images\mobile-register,login.jpg)
+(LIM018-social-network\src\images\mobile-home,userprofile.jpg)
 
+* **Desktop**
+(LIM018-social-network\src\images\desktop-register,login.jpg)
+(LIM018-social-network\src\images\desktop-home.jpg)
 ## Historias de Usuario:
 
-### 1. **Como** amante de la gastronomía **Quiero** relacionarme con otras personas con los mismos intereses **Para** compartir recetas, secretos culinarios, recomendaciones de restaurantes, etc.
+### 1. **Como** *amante de la gastronomía* **Quiero** *relacionarme con otras personas con los mismos intereses* **Para** *compartir recetas, secretos culinarios, recomendaciones de restaurantes, etc.*
 
 **Criterios de aceptación**
 - Crear red social para amantes de la gastronomía
@@ -26,7 +32,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Html con secciones que pasen de una vista a otra usando url
 - Que el código sea subido al repositorio
 
-### 2. **Como** usuario **Quiero** poder registrarme con correo y contraseña o con google **Para** pertenecer a la The Social Food
+### 2. **Como** *usuario* **Quiero** *poder registrarme con correo y contraseña o con google* **Para** *pertenecer a la The Social Food*
 
 **Criterios de aceptación**
 - Interfaz con campos de texto para que el usuario ingrese sus datos: nombre, correo y contraseña
@@ -46,7 +52,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Que el código sea subido al repositorio
 - Que pase test unitario
 
-### 3. **Como** usuario **Quiero** poder loguearme con correo y contraseña o con google **Para** ingresar a la aplicación
+### 3. **Como** *usuario* **Quiero** *poder loguearme con correo y contraseña o con google* **Para** *ingresar a la aplicación*
 
 **Criterios de aceptación**
 - Interfaz con campos de texto para que el usuario ingrese sus datos: correo y contraseña
@@ -65,8 +71,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Que el código sea subido al repositorio
 - Que pase test unitario
 
-
-### 4. **Como** usuario **Quiero** visualizar una página principal **Para** poder publicar y ver publicaciones de otros usuarios
+### 4. **Como** *usuario* **Quiero** *visualizar una página principal* **Para** *poder publicar y ver publicaciones de otros usuarios*
 
 **Criterios de aceptación**
 - Que haya una barra de navegación
@@ -81,7 +86,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Que el código sea subido al repositorio
 - Que pase test unitario
 
-### 5. **Como** usuario **Quiero** crear una publicación **Para** interactuar con otros usuarios
+### 5. **Como** *usuario* **Quiero** *crear una publicación* **Para** *interactuar con otros usuarios*
 
 **Criterios de aceptación**
 - Que haya un campo de texto para ingresar mi opinión
@@ -95,7 +100,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Que el código sea subido al repositorio
 - Que pase test unitario
 
-### 6. **Como** usuario **Quiero** poder borrar una publicación específica **Para** ya no verlas
+### 6. **Como** *usuario* **Quiero** *poder borrar una publicación específica* **Para** *ya no verlas*
 
 **Criterios de aceptación**
 - Que haya una opción de eliminar con un ícono
@@ -108,9 +113,8 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Code review
 - Que el código sea subido al repositorio
 - Que pase test unitario
-# Creando una Red Social
 
-### 7. **Como** usuario **Quiero** poder editar una publicación específica **Para** ya no verlas
+### 7. **Como** *usuario* **Quiero** *poder editar una publicación específica* **Para** *corregir si me equivoqué*
 
 **Criterios de aceptación**
 - Que haya una opción de editar con un ícono
@@ -125,9 +129,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Code review
 - Que el código sea subido al repositorio
 - Que pase test unitario
-# Creando una Red Social
-
-### 8. **Como** usuario **Quiero** poder dar y quitar me gusta a las publicaciones **Para** mostrar que me gustó o no la publicación
+### 8. **Como** *usuario* **Quiero** *poder dar y quitar me gusta a las publicaciones* **Para** *mostrar que me gustó o no la publicación*
 
 **Criterios de aceptación**
 - Que haya un ícono de me gusta
@@ -142,6 +144,7 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 - Code review
 - Que el código sea subido al repositorio
 - Que pase test unitario
+
 # Creando una Red Social
 
 ## Índice

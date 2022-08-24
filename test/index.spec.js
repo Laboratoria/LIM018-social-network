@@ -52,7 +52,7 @@ describe('signupview', () => {
   let btnSignUp;
   let eMessage;
 
-  beforeEach(() => {
+  beforeAll(() => {
     document.body.innerHTML = '';
     document.body.appendChild(signUpView);
     email = document.getElementById('email');
@@ -92,7 +92,6 @@ describe('signupview', () => {
     email.value = 'prueba';
     password.value = '123456';
 
-    signUpWithEmail.mockRejectedValueOnce(new Error('Firebase: Error (auth/invalid-email).'));
     btnSignUp.click();
     expect(eMessage.textContent).toEqual('Debe ingresar un correo electrónico válido');
   });
