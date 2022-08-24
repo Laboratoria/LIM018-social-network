@@ -9,15 +9,15 @@ Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizan
 * Adultos desde jóvenes de entre 20 a 40 años que son aficionados a la cocina y gastronomía que desean formar una comunidad e interactuar con personas entusiastas como ellos mediante sus publicaciones y dando me gusta a las publicaciones de otros usuarios.
 
 ### Prototipo de baja fidelidad:
-(LIM018-social-network\src\images\mobile-lowprototipe.png)
+[mobile low-prototipe](LIM018-social-network\src\images\mobile-lowprototipe.png)
 ### Prototipo de alta fidelidad:
 * **Mobile**
-(LIM018-social-network\src\images\mobile-register,login.jpg)
-(LIM018-social-network\src\images\mobile-home,userprofile.jpg)
+[mobile-register,login](LIM018-social-network\src\images\mobile-register,login.jpg)
+[mobile-home,userprofile](LIM018-social-network\src\images\mobile-home,userprofile.jpg)
 
 * **Desktop**
-(LIM018-social-network\src\images\desktop-register,login.jpg)
-(LIM018-social-network\src\images\desktop-home.jpg)
+[desktop-register,login](LIM018-social-network\src\images\desktop-register,login.jpg)
+[desktop-home](LIM018-social-network\src\images\desktop-home.jpg)
 ## Historias de Usuario:
 
 ### 1. **Como** *amante de la gastronomía* **Quiero** *relacionarme con otras personas con los mismos intereses* **Para** *compartir recetas, secretos culinarios, recomendaciones de restaurantes, etc.*
