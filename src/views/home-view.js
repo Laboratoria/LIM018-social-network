@@ -61,7 +61,7 @@ export const createBehaviorHomeView = () => {
 
   const generatePostContent = (post) => {
     const likeActive = post.data().likes.includes(getCurrentUser().uid);
-    const userImage = post.data().userId === getCurrentUser().uid ? getCurrentUser().photoURL : './images/USUARIO-ICONO.png';
+    const userImage = post.data().photoUser !== null ? post.data().photoUser : './images/USUARIO-ICONO.png';
     const postContent = `
       <div class='content'>
         ${post.data().userId === getCurrentUser().uid ? `<div class='btn-delete-edit'>
@@ -76,7 +76,7 @@ export const createBehaviorHomeView = () => {
         </div>
         <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
         <div class='like-section'>  
-          <button data-id=${post.id} class='btn-like'><img src='${likeActive ? '../images/heart.png' : '../images/like.png'}' class='pub-icon'></button>
+          <button data-id=${post.id} class='btn-like'><img src='${likeActive ? './images/heart.png' : './images/like.png'}' class='pub-icon'></button>
           <p>${post.data().likes.length} me gusta</p>
         </div>  
         <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
@@ -159,9 +159,9 @@ export const createBehaviorHomeView = () => {
       createPost({
         userName: getCurrentUser().displayName,
         content: userPost.value,
-        photoUser: getCurrentUser().photoURL,
         userId: getCurrentUser().uid,
         likes: [],
+        photoUser: getCurrentUser().photoURL,
       })
         .then((docRef) => {
           // eslint-disable-next-line no-console
