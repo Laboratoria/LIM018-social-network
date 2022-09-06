@@ -1,0 +1,591 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changeView debería imprimir la ruta "" 1`] = `
+<body>
+  <div
+    class="backgroundImage"
+  >
+    
+  
+    <div
+      class="containerForm"
+    >
+      
+    
+      <div
+        class="view"
+      >
+        
+      
+        <h1
+          class="titles"
+        >
+           THE SOCIAL FOOD 
+        </h1>
+        
+      
+        <form>
+          
+        
+          <input
+            class="emailPassword"
+            id="userEmail"
+            placeholder="Email"
+            type="email"
+            value=""
+          />
+          
+        
+          <br />
+          
+        
+          <input
+            class="emailPassword"
+            id="password"
+            placeholder="Contraseña"
+            type="password"
+            value=""
+          />
+          
+        
+          <br />
+          
+        
+          <button
+            class="buttonsForm"
+            id="submitLogIn"
+            type="button"
+          >
+            Log In
+          </button>
+          
+      
+        </form>
+        
+      
+        <div
+          id="eMessage"
+        />
+        
+        
+        <p>
+          o
+        </p>
+        
+        
+        <img
+          class="googleImage"
+          id="gmailLogIn"
+          src="./images/google-logo.png"
+        />
+        
+        
+        <p>
+          Con Google
+        </p>
+        
+        
+        <h3>
+          Si no tienes cuenta, crea una 
+          <span>
+            <a
+              href="#/sign-up"
+            >
+                aquí
+            </a>
+          </span>
+        </h3>
+        
+    
+      </div>
+      
+    
+      <div
+        class="modalContainer"
+      >
+        
+      
+        <div
+          class="modal"
+        >
+          
+        
+          <img
+            src="./images/email-alert-icon.png"
+          />
+          
+        
+          <p>
+            Cuenta no verificada, porfavor revise su bandeja de correo electrónico
+          </p>
+          
+        
+          <button
+            class="modalButton"
+          >
+            Aceptar
+          </button>
+          
+      
+        </div>
+        
+    
+      </div>
+          
+  
+    </div>
+      
+  </div>
+</body>
+`;
+
+exports[`changeView debería imprimir la ruta log-in 1`] = `
+<body>
+  <div
+    class="backgroundImage"
+  >
+    
+  
+    <div
+      class="containerForm"
+    >
+      
+    
+      <div
+        class="view"
+      >
+        
+      
+        <h1
+          class="titles"
+        >
+           THE SOCIAL FOOD 
+        </h1>
+        
+      
+        <form>
+          
+        
+          <input
+            class="emailPassword"
+            id="userEmail"
+            placeholder="Email"
+            type="email"
+            value=""
+          />
+          
+        
+          <br />
+          
+        
+          <input
+            class="emailPassword"
+            id="password"
+            placeholder="Contraseña"
+            type="password"
+            value=""
+          />
+          
+        
+          <br />
+          
+        
+          <button
+            class="buttonsForm"
+            id="submitLogIn"
+            type="button"
+          >
+            Log In
+          </button>
+          
+      
+        </form>
+        
+      
+        <div
+          id="eMessage"
+        />
+        
+        
+        <p>
+          o
+        </p>
+        
+        
+        <img
+          class="googleImage"
+          id="gmailLogIn"
+          src="./images/google-logo.png"
+        />
+        
+        
+        <p>
+          Con Google
+        </p>
+        
+        
+        <h3>
+          Si no tienes cuenta, crea una 
+          <span>
+            <a
+              href="#/sign-up"
+            >
+                aquí
+            </a>
+          </span>
+        </h3>
+        
+    
+      </div>
+      
+    
+      <div
+        class="modalContainer"
+      >
+        
+      
+        <div
+          class="modal"
+        >
+          
+        
+          <img
+            src="./images/email-alert-icon.png"
+          />
+          
+        
+          <p>
+            Cuenta no verificada, porfavor revise su bandeja de correo electrónico
+          </p>
+          
+        
+          <button
+            class="modalButton"
+          >
+            Aceptar
+          </button>
+          
+      
+        </div>
+        
+    
+      </div>
+          
+  
+    </div>
+      
+  </div>
+</body>
+`;
+
+exports[`changeView debería imprimir la ruta sign-up 1`] = `
+<body>
+  <section
+    class="backgroundImage"
+  >
+    
+  
+    <div
+      class="containerForm"
+    >
+      
+    
+      <div
+        class="view"
+      >
+        
+      
+        <h1
+          class="titles"
+        >
+           THE SOCIAL FOOD 
+        </h1>
+        
+        
+        <form>
+          
+          
+          <input
+            class="registerInputs"
+            id="userName"
+            placeholder="Nombre de Usuario"
+            type="text"
+          />
+          
+          
+          <br />
+          
+          
+          <input
+            class="registerInputs"
+            id="email"
+            placeholder="Correo electrónico"
+            type="email"
+            value=""
+          />
+          
+          
+          <br />
+          
+          
+          <input
+            class="registerInputs"
+            id="userPassword"
+            placeholder="Contraseña"
+            type="password"
+            value=""
+          />
+          
+          
+          <br />
+          
+          
+          <button
+            class="buttonsForm"
+            id="submitSingUp"
+            type="button"
+            value="Sign Up"
+          >
+            Sign Up
+          </button>
+          
+        
+        </form>
+        
+        
+        <div
+          id="eMessage"
+        />
+        
+        
+        <img
+          class="googleImage"
+          id="gmailSignIn"
+          src="./images/google-logo.png"
+        />
+        
+        
+        <p>
+          Con Google
+        </p>
+        
+        
+        <h3>
+          ¿Tienes cuenta?
+          <span>
+            <a
+              href="#/log-in"
+            >
+                Entrar
+            </a>
+          </span>
+        </h3>
+        
+    
+      </div>
+      
+    
+      <div
+        class="modalContainer"
+      >
+        
+      
+        <div
+          class="modal"
+        >
+          
+        
+          <img
+            src="./images/verification-email.jpg"
+          />
+          
+        
+          <p>
+            Se envió un código de verificación a su correo electrónico
+          </p>
+          
+        
+          <button
+            class="modalButton"
+          >
+            Aceptar
+          </button>
+          
+      
+        </div>
+        
+    
+      </div>
+          
+  
+    </div>
+  </section>
+</body>
+`;
+
+exports[`changeView debería imprimir ruta default 1`] = `
+<body>
+  <div>
+    
+    
+    <h2>
+      404
+    </h2>
+    
+    
+    <h1>
+      Página no encontrada
+    </h1>
+    
+    
+    <p>
+      El archivo especificado no se encontró en este sitio web. Por favor, compruebe la URL para errores y vuelva a intentarlo.
+    </p>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`signupview debería coincidir con el template 1`] = `
+<section
+  class="backgroundImage"
+>
+  
+  
+  <div
+    class="containerForm"
+  >
+    
+    
+    <div
+      class="view"
+    >
+      
+      
+      <h1
+        class="titles"
+      >
+         THE SOCIAL FOOD 
+      </h1>
+      
+        
+      <form>
+        
+          
+        <input
+          class="registerInputs"
+          id="userName"
+          placeholder="Nombre de Usuario"
+          type="text"
+        />
+        
+          
+        <br />
+        
+          
+        <input
+          class="registerInputs"
+          id="email"
+          placeholder="Correo electrónico"
+          type="email"
+          value=""
+        />
+        
+          
+        <br />
+        
+          
+        <input
+          class="registerInputs"
+          id="userPassword"
+          placeholder="Contraseña"
+          type="password"
+          value=""
+        />
+        
+          
+        <br />
+        
+          
+        <button
+          class="buttonsForm"
+          id="submitSingUp"
+          type="button"
+          value="Sign Up"
+        >
+          Sign Up
+        </button>
+        
+        
+      </form>
+      
+        
+      <div
+        id="eMessage"
+      />
+      
+        
+      <img
+        class="googleImage"
+        id="gmailSignIn"
+        src="./images/google-logo.png"
+      />
+      
+        
+      <p>
+        Con Google
+      </p>
+      
+        
+      <h3>
+        ¿Tienes cuenta?
+        <span>
+          <a
+            href="#/log-in"
+          >
+              Entrar
+          </a>
+        </span>
+      </h3>
+      
+    
+    </div>
+    
+    
+    <div
+      class="modalContainer"
+    >
+      
+      
+      <div
+        class="modal"
+      >
+        
+        
+        <img
+          src="./images/verification-email.jpg"
+        />
+        
+        
+        <p>
+          Se envió un código de verificación a su correo electrónico
+        </p>
+        
+        
+        <button
+          class="modalButton"
+        >
+          Aceptar
+        </button>
+        
+      
+      </div>
+      
+    
+    </div>
+        
+  
+  </div>
+</section>
+`;

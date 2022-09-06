@@ -1,0 +1,372 @@
+@import './modal.css';
+
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    font-weight: bolder;
+    color: rgba(34, 34, 34, 0.78);
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgba(150, 147, 145, 1);
+}
+
+.backgroundImage {
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: stretch;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.titles {
+    font-family: 'Gotu', sans-serif;
+    font-size: 35px;
+    width: 260px;
+    text-align: center;
+    color: rgba(34, 34, 34, 0.78);
+    padding: 40px 20px;
+}
+
+.emailPassword,
+.registerInputs {
+    background-color: rgba(255, 255, 255, 0.22);
+    border: 1px solid #969391;
+    border-radius: 20px;
+    height: 1.875rem;
+    width: 15.625rem;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 10px 13px -7px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.buttonsForm {
+    font-size: 0.81rem;
+    width: 16rem;
+    height: 2rem;
+    background-color: rgba(152, 182, 110, 1);
+    margin-bottom: 30px;
+}
+
+.containerForm>h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color: #90C9BB;
+}
+
+.view>h3,
+p {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    color: rgba(34, 34, 34, 0.8);
+    padding: 6px;
+}
+
+.text {
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    color: #BABFA3;
+    margin-bottom: 30px;
+}
+
+.googleImage {
+    height: 1.7rem;
+    width: 1.7rem;
+    padding: 5px 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.errorMessage {
+    background-color: rgba(34, 34, 34, 0.14);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.68rem;
+    text-align: center;
+    color: rgba(147, 23, 23, 1);
+    width: 250px;
+    height: 15px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.header {
+    background-color: rgba(152, 182, 110, 1);
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    font-family: 'Gotu', sans-serif;
+    position: fixed;
+    box-shadow: 0px 15px 35px -5px rgba(104, 133, 65, 0.35);
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-around;
+}
+
+ul {
+    padding: 8px;
+    list-style-type: none;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.5rem;
+    color: #222222;
+}
+
+.icon {
+    height: 1.44rem;
+    width: 1.44rem;
+}
+
+.logo {
+    height: 2rem;
+    width: 2rem;
+}
+
+.search {
+    width: 25%;
+    height: 0.62rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Gotu', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(99, 91, 83, 1);
+    background-color: white;
+    background-image: url('../images/search-icon.png');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: 10px 10px;
+    padding: 10px 30px;
+    margin-top: 0.94rem;
+}
+
+.interactions {
+    background-color: rgba(152, 182, 110, 1);
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    padding-inline: 5px;
+}
+
+.homeSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    margin-top: 6.9rem;
+}
+
+.containerInfo {
+    width: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.userInfo {
+    width: 50%;
+    height: 30%;
+    border-radius: 18px;
+    margin: 5px 30px;
+    padding: 30px 20px;
+    display: none;
+}
+
+.userImage {
+    background-color: rgba(201, 231, 156, 1);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-profile {
+    height: 1.9rem;
+    width: 1.9rem;
+    border-radius: 50%;
+}
+
+.publications {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.get-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding-bottom: 6rem;
+}
+
+.content {
+    width: 90%;
+    height: 10.3rem;
+    box-shadow: 14px 15px 41px 8px rgba(201, 201, 201, 0.8);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newpost {
+    align-items: flex-end;
+}
+
+.user-post {
+    color: rgba(34, 34, 34, 0.8);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50%;
+    margin: 0;
+    padding: 2px 4px;
+}
+
+.area-post {
+    font-family: 'Gotu', sans-serif;
+    font-size: 0.75rem;
+    width: 90%;
+    border: 1px solid rgba(34, 34, 34, 0.2);
+    border-radius: 2px;
+    padding: 8px;
+    margin-inline: 0.3rem;
+    resize: none;
+}
+
+.buttonPost {
+    background-color: rgba(196, 167, 71, 1);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.7rem;
+    color: white;
+    border-radius: 20px;
+    height: 1.1rem;
+    width: 6rem;
+    border-style: none;
+    margin-top: 5px;
+}
+
+.btn-delete-edit {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.pub-icon {
+    height: 0.7rem;
+    width: 0.7rem;
+
+}
+
+.xBut {
+    width: 2rem;
+}
+
+.buttonPost:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.like-section {
+    display: flex;
+}
+
+@media only screen and (min-width:600px) {
+    .main {
+        justify-content: center;
+    }
+
+    .containerInfo {
+        width: 40%;
+    }
+
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .interactions {
+        background-color: transparent;
+        display: flex;
+        gap: 10px;
+        margin: 7px;
+        position: inherit;
+    }
+
+    .header {
+        position:fixed;
+    }
+
+    .publications {
+        width: 70%;
+    }
+}

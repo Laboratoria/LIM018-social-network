@@ -1,3 +1,150 @@
+# The Social Food 
+Red social creada para amantes de la gastronomía que desean hacer comunidad y compartir sus secretos culinarios, recetas y recomendaciones.
+Permite a los usuarios crearse una cuenta con su correo y contraseña o utilizando una cuenta de google e ingresar a la aplicación. El usuario puede crear, editar, borrar y dar me gusta a publicaciones.
+
+## Investigación UX
+
+### Principales usuarios de mi producto y sus objetivos en relación a mi producto:
+
+* Adultos desde jóvenes de entre 20 a 40 años que son aficionados a la cocina y gastronomía que desean formar una comunidad e interactuar con personas entusiastas como ellos mediante sus publicaciones y dando me gusta a las publicaciones de otros usuarios.
+
+### Prototipo de baja fidelidad:
+![mobile low-prototipe](./src/images/mobile-lowprototipe.png)
+### Prototipo de alta fidelidad:
+* **Mobile**
+![mobile-register,login](./src/images/mobile-register%2Clogin.jpg)
+![mobile-home,userprofile](./src/images/mobile-home%2Cuserprofile.jpg)
+
+* **Desktop**
+![desktop-register,login](./src/images/desktop-register%2Clogin.jpg)
+![desktop-home](./src/images/desktop-home.jpg)
+## Historias de Usuario:
+
+### 1. **Como** *amante de la gastronomía* **Quiero** *relacionarme con otras personas con los mismos intereses* **Para** *compartir recetas, secretos culinarios, recomendaciones de restaurantes, etc.*
+
+**Criterios de aceptación**
+- Crear red social para amantes de la gastronomía
+- Que usuario pueda ir a de una vista a otra haciendo click
+
+**Definición de terminado**
+- Prototipo de Baja fidelidad
+- Prototipo de alta fidelidad
+- Html con secciones que pasen de una vista a otra usando url
+- Que el código sea subido al repositorio
+
+### 2. **Como** *usuario* **Quiero** *poder registrarme con correo y contraseña o con google* **Para** *pertenecer a la The Social Food*
+
+**Criterios de aceptación**
+- Interfaz con campos de texto para que el usuario ingrese sus datos: nombre, correo y contraseña
+- El correo debe ser una cuenta válida
+- Si el correo no es válido, mostrar un mensaje indicándolo
+- Que la contraseña tenga 6 o más caracteres
+- Solo se puede crear un usuario por correo y si el correo ya existe debe mostrar un mensaje
+- Los campos no deben estar vacíos, si no debe mostrar un mensaje
+- Bbotón para registrarse
+- El usuario puede registrarse por autenticación de Google
+- Una vez registrado, el usuario debe verificar su correo a través del email que se le envió.
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
+### 3. **Como** *usuario* **Quiero** *poder loguearme con correo y contraseña o con google* **Para** *ingresar a la aplicación*
+
+**Criterios de aceptación**
+- Interfaz con campos de texto para que el usuario ingrese sus datos: correo y contraseña
+- El correo debe estar registrado y ser una cuenta verificada
+- Si el correo no está registrado y verificado, debe mostrar un mensaje indicándolo
+- Si la contraseña es incorrecta debe mostrar un mensaje indicandolo
+- Los campos no deben estar vacíos, sino debe mostrar un mensaje indicandolo
+- Debe haber un botón para el logueo
+- El usuario puede iniciar sesión por autenticación de google
+- Si los datos del usuario son válidos se debe redireccionar a la vista home
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
+### 4. **Como** *usuario* **Quiero** *visualizar una página principal* **Para** *poder publicar y ver publicaciones de otros usuarios*
+
+**Criterios de aceptación**
+- Que haya una barra de navegación
+- Que haya un área donde pueda escribir mis post
+- Que pueda ver mi información de usuario: nombre, foto
+- Quiero por ver un area con todos los post en general ya publicados
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
+### 5. **Como** *usuario* **Quiero** *crear una publicación* **Para** *interactuar con otros usuarios*
+
+**Criterios de aceptación**
+- Que haya un campo de texto para ingresar mi opinión
+- Que haya un botón para publicar mi post
+- Que se observe el post nuevo sin recargar la página
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
+### 6. **Como** *usuario* **Quiero** *poder borrar una publicación específica* **Para** *ya no verlas*
+
+**Criterios de aceptación**
+- Que haya una opción de eliminar con un ícono
+- Que solo se puedan ver en mis publicaciones
+- Que se elimine al dar click
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
+### 7. **Como** *usuario* **Quiero** *poder editar una publicación específica* **Para** *corregir si me equivoqué*
+
+**Criterios de aceptación**
+- Que haya una opción de editar con un ícono
+- Que solo se puedan ver en mis publicaciones
+- Al dar click en editar que pareza el botón guardar
+- Que se habilite el área para poder escribir, al dar click en el ícono de editar
+- Que luego de editar mi publicación y guarde, que se actualice sin recargar la página
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+### 8. **Como** *usuario* **Quiero** *poder dar y quitar me gusta a las publicaciones* **Para** *mostrar que me gustó o no la publicación*
+
+**Criterios de aceptación**
+- Que haya un ícono de me gusta
+- Que se pueda dar me gusta a las publicaciones
+- Al dar click a ícono que se aumente el número de me gusta
+- Que se pueda quitar el me gusta a las publicaciones
+- Al quitar el me gusta que disminuya el número de me gusta
+
+**Definición de terminado**
+- Debe ser una SPA
+- Debe ser responsive
+- Code review
+- Que el código sea subido al repositorio
+- Que pase test unitario
+
 # Creando una Red Social
 
 ## Índice

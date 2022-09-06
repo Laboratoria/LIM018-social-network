@@ -1,6 +1,19 @@
-// aqui exportaras las funciones que necesites
+import { getUser } from '../firebase/post.js';
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
+const userInSession = () => JSON.parse(sessionStorage.getItem('USER'));
+
+export const userInfoView = (templateElement) => {
+  const userContainer = templateElement;
+  return getUser(userInSession())
+    .then((userRef) => {
+      const userTemplate = `
+        <div class='userInfo'>
+        <div class='userImage'>
+            <img src='${userRef.data().photo !== undefined ? userRef.data().photo : './images/USUARIO-ICONO.png'}' class='icon-profile' referrerpolicy='no-referrer'>
+        </div>
+        <p>${userRef.data().name}</p>
+        </div>
+      `;
+      userContainer.innerHTML = userTemplate;
+    });
 };
