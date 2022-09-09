@@ -1,4 +1,132 @@
+# RED SOCIAL TRAVELERS
+Esta red social ha sido desarrollada con la finalidad de que sirva a las personas que les encanta viajar por el mundo para que puedan compartir sus experiencias y vivencias.
+
+# Diseño de baja fidelidad
+
+ + ![Pagina](src/img/diseño-baja-fidelidad.JPG)
+
+# Diseño inicial de alta fidelidad
+
+ + ![Pagina](src/img/diseño-alta-fidelidad.JPG)
+
+# Diseño final
+ + ![Pagina](src/img/diseño-final.JPG)
+
+El diseño fue modificado tomando en cuenta el feedback recibido por las compañeras y coachs en los diferentes sprints,
+Además de las pruebas de usabilidad realizados con 2 personas externas al bootcamp.
+# Nuestros principales usuarios
+Nuestros principales usuarios son las personas que les gusta viajar, conocer lugares, culturas, gastronomia, tradiciones, etc.
+
+# Qué problema resuelve el producto / para qué le servirá a estos usuarios
+Esta red social les da un espacio para compartir, ayudar e incentivar a otros a vivir experiencias nuevas; y sobre todo conocer personas con sus mismos gustos.
+
+# HISTORIAS DE USUARIOS
+
+# Historia de usuario 1:Registo de usuario
+Yo como usuario quiero poder crear una cuenta en la red social usando mi cuenta de google, facebook u otro correo electrónico.
+
+Criterios de aceptación:
+
+* Tener campos para ingresar el nombres, apellidos, email y contraseña
+* Tener un botón que permita registrar la información ingresada
+* Tener un botón que permita volver a la vista de login
+* Que valide si el correo ingresado es válido o no 
+* Que valide si el correo ingresado todavía no ha sido registrado
+* Que no permita registrar campos vacíos
+* La contraseña debe ser mínimo de 6 dígitos
+* Que muestre un mensaje de error si los datos no han sido ingresados correctamente
+* Que muestre un mensaje indicando que el usuario fue creado de forma correcta.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que pase se suba a GitHub 
+* Que se despligue en GitHub Page.
+
+# Historia de usuario 2:login de usuario
+Yo como usuario quiero iniciar sesion antes de ingresar a la red social para acceder a mi perfil
+Criterios de aceptación:
+
+* Tener campos para ingresar email y contraseña
+* Tener el botón de login con Google  o Facebook 
+* Solo ingresar cuando el login se haya realizado correctamente
+* Que valide si el correo ingresado ua está registrado.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
+
+# Historia de usuario 3 : Crear Posts
+Yo como usuario quiero poder crear posts en la red social para compartirla con mis amigos.
+
+Criterios de aceptación:
+
+* Que haya un campo de texto para ingresar un text nuevo
+* Que haya un botón que me permita publicar el post
+* Que el post se guarde en una coleccion en Firebase.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
+
+# Historia de usuario 4 : Editar Posts
+Yo como usuario quiero poder editar post en la red social para compartirla con mis amigos.
+
+Criterios de aceptación:
+
+* Que haya una sección donde se muestren los posts publicados
+* Que haya un botón que me permita editar el post
+* Que haya un botón para guardar el post editado
+* Que haya un botón para cancelar la edición del post
+* Que el post editado se actualice en Firebase.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page
+
+# Historia de usuario 5 : borrar Posts
+Yo como usuario quiero poder borrar un post en la red social para que ya no se muestre en la red social.
+
+Criterios de aceptación:
+
+* Que haya un botón que me permita borrar un post
+* Que haya un botón para aceptar el borrado del post
+* Que haya un botón para cancelar el borrado del post
+* Que el post se borre también de Firebase.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
+
+
+# Historia de usuario 6 : Dar like a los posts
+Yo como usuario quiero poder dar like a un post en la red social para que se evidencie que me gusta la publicación
+
+Criterios de aceptación:
+
+* Que haya un botón que me permita dar like a un post
+* Que cada like de un post se guarde en una campo dentro de Firebase
+* Que la cantidad de likes se incremente según los likes registrados.
+
+Definición de terminado:
+
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
+
+
+
+
 # Creando una Red Social
+
 
 ## Índice
 

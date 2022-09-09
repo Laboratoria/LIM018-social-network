@@ -1,0 +1,468 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Rajdhani&family=Roboto:wght@300&display=swap');*/
+
+/* -------background the view SPA-------- */
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* STYLE BUTTON */
+.buttonStyle {
+ /* background:rgb(2, 87, 66);*/
+  background:rgb(119 74 132);
+  color: #f1f6f0;
+  border-radius: 8px;
+  margin-top:5%;
+  padding: 2%;
+  font-size: 40%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  }
+
+.buttonStyle:hover {
+  background: rgb(48, 158, 75);
+}
+
+/* STYLE LOGIN */
+.windowlogin{
+  background:url('img/loros.jpg'); 
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.logoLogin{
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+align-items: center;
+margin-top: 2%;
+margin-bottom: 2%;
+}
+
+.imgLogo{
+  margin-top: 20%;
+  border:#7f00b2;
+  background:url('img/logo.JPG'); 
+  border-radius: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100px;
+  height:100px;
+}
+.nameLogo{
+  font-size: 70%;
+   color: #7c1097;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.formviewlogin{
+ background: rgba(241, 228, 241, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  border-radius: 10px;
+  padding-bottom: 4%;
+  margin-bottom: 3%;
+  }
+ 
+
+.loginImputDiv{
+width: 100%;
+display: flex;
+flex-direction: column;
+margin:0;
+text-align-last: center;
+}
+.inputs{
+  background: rgb(234 225 249);
+  border-radius: 8px;
+  padding: 2% ;
+  border: none;
+  margin: 4% 10%; 
+}
+
+.loginQuestionDiv{ 
+margin-left: auto;
+margin-right: auto;
+}
+
+.questionAboutCount{
+color:rgb(6, 68, 52);
+font-size: 30%;
+}
+
+.lineLogin{
+color:rgb(6, 68, 52);
+font-size: 40%;
+font-weight: bolder;
+margin-left: auto;
+margin-right: auto;
+margin-top: 4%;
+}
+
+.btnLoginDiv{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+ 
+}
+
+.googleFacebook{
+   display: flex;
+   justify-content: space-around;
+   margin-top:3%;
+   padding:0;
+   width: 100%;
+    margin-bottom: 2%;
+}
+
+.imgGoogle{
+  border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;
+  border: none;
+}
+
+.imgFacebook{
+   border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;  
+  border: none;
+} 
+
+
+/*  STYLE REGISTER */
+.windowRegister {
+background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center;
+height: 90vh;
+font-size: 30px;
+font-weight: bolder;
+z-index: 1;
+padding-top: 10%;
+padding-bottom: 10%;
+display: flex;
+flex-direction: column-reverse;
+}
+
+.formRegister{
+  background: rgba(248, 250, 241, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size:cover; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  border-radius: 10px;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  }  
+ 
+.welcomeRegister{
+color:#415c3b;
+font-size: 55%;
+margin-bottom: 7%;
+font-style: oblique;
+font-weight: bolder ;
+text-align: center;
+}
+
+.registerDateDiv{
+width: 70%;
+display: flex;
+flex-direction: column;
+text-align-last: center;
+margin-bottom: 5%;
+
+}
+.messageDiv{
+  font-size: 50%;
+  font-weight: bolder;
+  color:#b42d4f;
+  text-align: center;
+}
+
+.btnsRegisterDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
+  height: 30%;
+}
+
+/*STYLE MURO------------------------------------------------------- */
+
+.muroDiv{
+background: #fcfcfc;
+ height: 120vh;
+}
+
+/* style HEADER */
+.headerContent{
+ background-color:#7f00b2;
+  padding: 2% 3%;
+  width:100%;
+  height: 6%;
+  color:rgb(110, 196, 166);
+  display: flex;
+  flex-direction: row; 
+ justify-content: space-between;
+}
+
+.logoContent{
+width: 80%;
+display: flex;
+flex-direction:row;
+border: none; 
+}
+
+.logo{
+  border: none;
+  border-radius: 120%; 
+  background-repeat: no-repeat;
+  width: 30px;
+  height:40px;
+  filter:saturate(150%);
+  border-color: none;
+}
+
+.logoName{
+  font-size: 70%;
+  color: #196938;
+  filter:saturate(500%);
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+.iconsContent{
+margin:1% 5%;
+width: 8%;
+display: flex;
+justify-content: space-between;
+}
+
+/* Imput para publicaciones */
+.newPostDiv{
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 2% 10%;
+}
+
+.newPost{
+  background-color: #dffdd8;
+  margin-left: 1%;
+  padding: 1.5%;
+  height:fit-content;
+  width: 90%;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+}
+
+.publicar{
+  color: #f7f7f7;
+  background:#1b83dd;
+  border-radius: 50%;
+  border: none;
+  padding: 0.2% 1%;
+  margin-left: 1%;
+  margin-right: 4%;
+  font-size: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* style BODY -----------------------------------------*/
+
+.postsContainerDiv{
+  margin: 3% 10%;
+  border-radius: 4%; 
+  box-shadow: 2px 2px 2px rgb(151 177 151);
+  width: 80%;
+ }
+
+ /* style del HEADER POST */
+ .headerPostContainer{
+  background:  rgb(164 121 188);
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 2px 2px 2px rgb(151 177 151);
+ }
+
+ .userPostContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 70%;
+  align-items: center;
+  color: #f7fcf7;
+  font-size: 10px;
+ }
+
+.postUsePhoto{
+ background:url('img/userlogo.PNG'); 
+ background-size:contain; 
+ background-repeat: no-repeat;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ margin:3%
+}
+
+.postUserName{
+color:whitesmoke;
+font-size: 100%;
+width: 50%;
+font-family:cursive;
+}
+
+.iconsEditDeletePostContainer{
+background:  rgb(164 121 188);
+margin:2% 4%;
+display: flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+width: 10%;
+font-size: 5px;
+}
+
+.btnEdit{
+ 
+  background:  rgb(164 121 188);
+  border: none;
+  color: #7be097;
+}
+
+.btnDelete{
+  background:  rgb(164 121 188);
+  border: none;
+  color: #7be097;
+}
+
+
+/* style del POST----------------- */
+
+.postTextDiv{
+display: inline-block;
+width: 100%;
+}
+
+.posttext{
+background-color: rgb(216 246 222);
+color: #11270e;
+width: 96%;
+height:50%;
+padding: 1% 2%;
+border: none;
+}
+
+.postIcon{
+width: 10%;
+display:flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+margin: 0.5% 5%;
+color: #0aad2a; 
+}
+
+.btnLike{
+border: none;
+background-color: white;
+color: #b42d4f;
+}
+
+.postCommentsDiv{
+display: inline-block;
+width: 100%;
+}
+
+
+.modalDelete{
+  background: rgba(75, 9, 86, 0.5);
+  color: #fff;
+  font-size: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  border-radius: 7px;
+  height: 12%;
+  width: 20%;
+  transition: all .5s;
+
+ }
+.buttonAceptDeletePost{
+  width: 80%;
+  margin: 2% auto 3% auto;
+  }
+
+.buttonCancelDeletePost{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ .buttonAceptDeletePost:hover{
+  background: rgb(48, 158, 75);
+ }
+
+ /* .buttonDeletePost{
+  background-color: rgb(11, 99, 37);
+  padding: 4px;
+  border-radius: 7px;
+ 
+ } */
+ .b{
+  background-color:black;
+  background-image:url('img/like.JPG'); 
+ color: rgb(163, 230, 208);
+  height:15px;
+  width:15px;
+  background-size: 100%;
+  background-repeat: no-repeat; 
+
+ }  
+
+ .modalEditPost{
+  background: rgba(75, 9, 86, 0.5);
+  color: #fff;
+  font-size: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  border-radius: 7px;
+  height: 12%;
+  width: 30%;
+  transition: all .5s;
+  margin: 3% 3%;
+ }
+
+.inputEditPost{
+width: 90%;
+padding: 2%;
+}
