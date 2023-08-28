@@ -98,8 +98,7 @@ p {
 .text {
     font-size: 0.875rem;
     font-family: "Roboto", sans-serif;
-    color: #BABFA3;
-    margin-bottom: 30px;
+    color: rgba(152, 182, 110, 0.806);
 }
 
 .googleImage {
@@ -111,7 +110,6 @@ p {
 }
 
 .errorMessage {
-    background-color: rgba(34, 34, 34, 0.14);
     font-family: "Roboto", sans-serif;
     font-size: 0.68rem;
     text-align: center;
@@ -120,7 +118,6 @@ p {
     height: 15px;
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
 }
 
 .header {
@@ -130,9 +127,7 @@ p {
     text-align: center;
     font-family: 'Gotu', sans-serif;
     position: fixed;
-    box-shadow: 0px 15px 35px -5px rgba(104, 133, 65, 0.35);
 }
-
 .navBar {
     display: flex;
     justify-content: space-around;
@@ -212,6 +207,10 @@ li {
     flex-direction: column;
     align-items: flex-end;
 }
+.containerInfoPost {
+    display: flex;
+    justify-content: center;
+}
 
 .userInfo {
     width: 50%;
@@ -220,6 +219,8 @@ li {
     margin: 5px 30px;
     padding: 30px 20px;
     display: none;
+    box-shadow: 13px 13px 55px #ededed,
+    -13px -13px 55px #ffffff;
 }
 
 .userImage {
@@ -260,18 +261,28 @@ li {
 
 .content {
     width: 90%;
-    height: 10.3rem;
-    box-shadow: 14px 15px 41px 8px rgba(201, 201, 201, 0.8);
+    height: 13.5rem;
+    box-shadow: 13px 13px 55px #ededed,
+    -13px -13px 55px #ffffff;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+}
+.container-btnpost {
+    width: 100%;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-texta {
+    width: 100%;
+    height: 100%;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
-
-.newpost {
-    align-items: flex-end;
-}
-
 .user-post {
     color: rgba(34, 34, 34, 0.8);
     display: flex;
@@ -287,11 +298,22 @@ li {
     font-family: 'Gotu', sans-serif;
     font-size: 0.75rem;
     width: 90%;
+    height: 80%;
     border: 1px solid rgba(34, 34, 34, 0.2);
-    border-radius: 2px;
-    padding: 8px;
     margin-inline: 0.3rem;
     resize: none;
+    border: none;
+}
+
+.post-text {
+    color: rgba(34, 34, 34, 0.8);
+    width: 95%;
+    height: 90%;
+    font-family: 'Gotu', sans-serif;
+    font-size: 0.75rem;
+    padding-inline: 0.4rem;    
+    resize: none;
+    border: none;
 }
 
 .buttonPost {
@@ -299,43 +321,61 @@ li {
     font-family: "Roboto", sans-serif;
     font-size: 0.7rem;
     color: white;
-    border-radius: 20px;
-    height: 1.1rem;
+    border-radius: 5px;
+    height: 1.2rem;
     width: 6rem;
     border-style: none;
     margin-top: 5px;
+    box-shadow: none;
 }
-
+.delete {
+    background-color: transparent;
+    color: rgba(196, 167, 71, 1);
+    border: 1px solid rgba(196, 167, 71, 1);
+}
 .btn-delete-edit {
     display: flex;
     flex-direction: row-reverse;
+    gap: 0.25rem;
+    padding: 0.15rem;
 }
 
 .hidden {
     display: none;
 }
 
-.show {
+/* .show {
     display: block;
+} */
+.show-user {
+    padding: 0.5rem;
 }
 
 .pub-icon {
     height: 0.7rem;
     width: 0.7rem;
-
-}
-
-.xBut {
-    width: 2rem;
 }
 
 .buttonPost:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.01);
 }
 
 .like-section {
+    margin-left: 0.4rem;
     display: flex;
+    align-items: center;
+}
+
+.btn-save {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+i:hover{
+    cursor: pointer;
 }
 
 @media only screen and (min-width:600px) {

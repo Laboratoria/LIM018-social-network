@@ -28,15 +28,19 @@ export const createHomeView = () => {
       <div class='containerInfo'>
       </div>  
       <div id='publications' class='publications'>
-        <div class='content newpost'>
-          <button type='button' class='buttonPost xBut'>x</button> 
+        <div class='content'> 
           <form class='user-post' id='post-container'>
             <div class='containerInfoPost'>
             </div>
-            <textarea placeholder='¿Tienes alguna recomendación...?' name='userPost' value='' id='userPost' class='area-post'></textarea>
+            <div class='container-texta'>
+              <textarea placeholder='¿Tienes alguna recomendación?' name='userPost' value='' id='userPost' class='area-post'></textarea>
+            </div>
           </form>
           <p id='msg'></p>
-          <button type='button' id='buttonPost' class='buttonPost'>Publicar</button> 
+          <div class='container-btnpost'>
+            <button type='button' id='buttonPost' class='buttonPost'>Publicar</button>
+            <button type='button' id='deletePost' class='buttonPost delete'>Borrar</button> 
+          </div>
         </div>
         <div class='text'>Lo nuevo en The Social Food</div>
         <div id='getPosts' class='get-post'></div>
@@ -55,6 +59,7 @@ export const createHomeView = () => {
 
 export const createBehaviorHomeView = () => {
   const buttonPost = document.querySelector('#buttonPost');
+  const delPost = document.querySelector('#deletePost');
   const userPost = document.querySelector('#userPost');
   const dataPosts = document.querySelector('#getPosts');
   const msg = document.querySelector('#msg');
@@ -65,8 +70,8 @@ export const createBehaviorHomeView = () => {
     const postContent = `
       <div class='content'>
         ${post.data().userId === getCurrentUser().uid ? `<div class='btn-delete-edit'>
-          <button data-id=${post.id} class='buttonPost-delete'><img src='./images/trash-bin.png' class='pub-icon'></button>
-          <button data-id=${post.id} class='buttonPost-edit'><img src='./images/editar.png' class='pub-icon'></button>
+          <i data-id=${post.id} class='buttonPost-delete'><img src='./images/trash-bin.png' class='pub-icon'></i>
+          <i data-id=${post.id} class='buttonPost-edit'><img src='./images/editar.png' class='pub-icon'></i>
         </div>` : ''}
         <div class='show-user'>
           <div class='userImage'>
@@ -74,12 +79,16 @@ export const createBehaviorHomeView = () => {
           </div>
           <p>${post.data().userName !== null ? post.data().userName : 'Usuario'}</p>
         </div>
-        <textarea id=${post.id} class='post-text user-post area-post' readonly>${post.data().content}</textarea>
-        <div class='like-section'>  
-          <button data-id=${post.id} class='btn-like'><img src='${likeActive ? './images/heart.png' : './images/like.png'}' class='pub-icon'></button>
-          <p>${post.data().likes.length} me gusta</p>
+        <div class='container-texta'>
+          <textarea id=${post.id} class='post-text' readonly>${post.data().content}</textarea>
         </div>  
-        <input id=${`btn-${post.id}`} type='button' value='Guardar' class='hidden'>
+        <div class='like-section'>  
+          <i data-id=${post.id} class='btn-like'><img src='${likeActive ? './images/heart.png' : './images/like.png'}' class='pub-icon'></i>
+          <p>${post.data().likes.length} me gusta</p>
+        </div>
+        <div class='btn-save'>  
+          <button id=${`btn-${post.id}`} class='hidden'>Guardar</button>
+        </div>  
       </div>
     `;
     return postContent;
@@ -169,13 +178,15 @@ export const createBehaviorHomeView = () => {
           postContainer.reset();
         })
         // eslint-disable-next-line no-console
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch((e) => console.log(e));
     } else {
       msg.textContent = 'Por favor, escribe un comentario';
       msg.classList.add('errorMessage');
     }
+  });
+
+  delPost.addEventListener('click', () => {
+    userPost.value = '';
   });
 };
 
