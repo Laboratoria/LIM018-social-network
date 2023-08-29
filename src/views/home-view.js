@@ -13,8 +13,9 @@ export const createHomeView = () => {
   const viewHome = `
     <header class='header'>
       <nav class='navBar'>
-        <ul>
-           <li><a href='#/home'><img src='./images/LOGO-BLANCO.png' class='logo'></a>THE SOCIAL FOOD</li>
+        <ul class='container-logo'>
+           <li><a href='#/home'><img src='./images/LOGO-BLANCO.png' class='logo'></a></li>
+           <li class='logo-name'>THE SOCIAL FOOD</li>
         </ul>
         <input type='text' name='search' placeholder='Buscar...' class='search icon'></li>
         <ul class='interactions'>   

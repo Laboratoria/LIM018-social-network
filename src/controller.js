@@ -20,6 +20,14 @@ export const changeView = (route) => {
       components.homeBehavior();
       break;
     }
+    case '#/notifications': { containerBody.appendChild(components.homeView());
+      components.homeBehavior();
+      break;
+    }
+    case '#/user': { containerBody.appendChild(components.homeView());
+      components.homeBehavior();
+      break;
+    }
     default: { containerBody.appendChild(components.errorView());
       break; }
   }

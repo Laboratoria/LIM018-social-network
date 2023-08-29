@@ -89,8 +89,8 @@ button:hover {
 
 .view>h3,
 p {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.875rem;
+    font-family: "Roboto", serif;
+    font-size: 0.95rem;
     color: rgba(34, 34, 34, 0.8);
     padding: 6px;
 }
@@ -101,6 +101,14 @@ p {
     color: rgba(152, 182, 110, 0.806);
 }
 
+.container-logo {
+    display: flex;
+    width: 10rem;
+}
+
+.logo-name {
+    font-size: 0.7rem;
+}
 .googleImage {
     height: 1.7rem;
     width: 1.7rem;
@@ -127,6 +135,7 @@ p {
     text-align: center;
     font-family: 'Gotu', sans-serif;
     position: fixed;
+    display: flex;
 }
 .navBar {
     display: flex;
@@ -267,13 +276,13 @@ li {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .container-btnpost {
     width: 100%;
     padding: 0.3rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .container-texta {
@@ -295,8 +304,9 @@ li {
 }
 
 .area-post {
-    font-family: 'Gotu', sans-serif;
-    font-size: 0.75rem;
+    font-family: 'Roboto', serif;
+    color: rgba(34, 34, 34, 0.8);
+    font-size: 0.95rem;
     width: 90%;
     height: 80%;
     border: 1px solid rgba(34, 34, 34, 0.2);
@@ -306,11 +316,11 @@ li {
 }
 
 .post-text {
+    font-family: 'Roboto', serif;
     color: rgba(34, 34, 34, 0.8);
+    font-size: 1rem;
     width: 95%;
     height: 90%;
-    font-family: 'Gotu', sans-serif;
-    font-size: 0.75rem;
     padding-inline: 0.4rem;    
     resize: none;
     border: none;
@@ -344,11 +354,10 @@ li {
     display: none;
 }
 
-/* .show {
-    display: block;
-} */
 .show-user {
     padding: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .pub-icon {
@@ -379,6 +388,9 @@ i:hover{
 }
 
 @media only screen and (min-width:600px) {
+    .header {
+        display: inline-block;
+    }
     .main {
         justify-content: center;
     }
@@ -400,10 +412,6 @@ i:hover{
         gap: 10px;
         margin: 7px;
         position: inherit;
-    }
-
-    .header {
-        position:fixed;
     }
 
     .publications {
